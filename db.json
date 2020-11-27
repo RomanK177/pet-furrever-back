@@ -145,245 +145,169 @@
             "numOfTreats": 20
         }
     ],
-    "numOfTreats": 20
-}, {
-    "_id": "p002",
-    "name": "Winston",
-    "gender": "male",
-    "size": "medium",
-    "type": "dog",
-    "breed": "Australian Shepherd",
-    "age": 1,
-    "adoptedAt": null,
-    "owner": {
-        "_id": "o002",
-        "name": "Doggy Daycare",
-        "imgUrl": "ari.jpg"
-    },
-    "description": "Sweetest pup. He's incredibly smart. Loves to play frisbee, and run!",
-    "imgUrls": [
-        "winston1.jpg",
-        "winston2.jpg",
-        "winston3.jpg",
-        "winston4.jpg",
-        "winston5.jpg"
-    ],
-    "tags": [
-        "cute",
-        "puppy",
-        "friendly"
-    ],
-    "comments": [{
-            "userName": "Guest",
-            "_id": "c123",
-            "comment": "I just sent him a treat! He's so cute!"
+    "adoptions": [{
+        "_id": "o1225",
+        "cretatedAt": 9898989,
+        "user": {
+            "_id": "u104",
+            "name": "Joe Hannigan"
+        },
+        "owner": {
+            "_id": "o102",
+            "name": "Purrfect Cats"
+        },
+        "pet": {
+            "_id": "p002",
+            "name": "Winston"
+        },
+        "status": "pending"
+    }],
+    "users": [{
+            "_id": "o001",
+            "fullName": "Farm Friends",
+            "userName": "farm_friend",
+            "password": "pukush",
+            "email": "farmfriend@puki.com",
+            "tel": "050-8809999",
+            "imgUrlProfile": "",
+            "userType": "owner",
+            "ownerData": {
+                "title": "Cutest barn yard animals",
+                "desc": "Looking for a barn forever home",
+                "tags": [
+                    "baby pigs",
+                    "sweet cows"
+                ],
+                "imgUrls": [
+                    "piggy.jpg",
+                    "moo.jpg",
+                    "chicken.jpg"
+                ],
+                "location": {
+                    "name": "Haifa",
+                    "lat": 32.9898,
+                    "lng": 12.28
+                },
+                "reviews": [{
+                    "_id": "r107",
+                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                    "rate": 4,
+                    "by": {
+                        "_id": "u102",
+                        "fullName": "user2",
+                        "imgUrl": "/img/img2.jpg"
+                    }
+                }]
+            }
         },
         {
-            "userName": "Alex",
-            "_id": "c124",
-            "comment": "How is he still available for adoption?! He's adorable."
-        }
-    ],
-    "numOfTreats": 20
-}, {
-    "_id": "p003",
-    "name": "Dorin",
-    "gender": "female",
-    "size": "small",
-    "type": "cat",
-    "breed": "persian",
-    "age": 8,
-    "adoptedAt": null,
-    "owner": {
-        "_id": "o003",
-        "name": "Furry Pals",
-        "imgUrl": "ashley1.jpg"
-    },
-    "description": "Grumpy litle furr ball.",
-    "imgUrls": [
-        "dorin1.jpg"
-    ],
-    "tags": [
-        "lazy",
-        "agressive"
-    ],
-    "comments": [{
-            "userName": "Guest",
-            "_id": "c123",
-            "comment": "I just sent her a treat! She's so cute!"
+            "_id": "o002",
+            "fullName": "Doggy Daycare",
+            "userName": "doggy_daycare",
+            "password": "pukush",
+            "email": "doggydaycare@puki.com",
+            "tel": "050-8809999",
+            "imgUrlProfile": "",
+            "userType": "owner",
+            "ownerData": {
+                "title": "Cutest dogs ever!",
+                "desc": "Looking for a barn forever home",
+                "tags": [
+                    "baby pigs",
+                    "sweet cows"
+                ],
+                "imgUrls": [
+                    "piggy.jpg",
+                    "moo.jpg",
+                    "chicken.jpg"
+                ],
+                "location": {
+                    "name": "Haifa",
+                    "lat": 32.9898,
+                    "lng": 12.28
+                },
+                "reviews": [{
+                    "_id": "r107",
+                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                    "rate": 4,
+                    "by": {
+                        "_id": "u102",
+                        "fullName": "user2",
+                        "imgUrl": "/img/img2.jpg"
+                    }
+                }]
+            }
         },
         {
-            "userName": "Alex",
-            "_id": "c124",
-            "comment": "How is she still available for adoption?! She's adorable."
+            "_id": "o003",
+            "fullName": "Furry Pals",
+            "userName": "furry_pals",
+            "password": "pukush",
+            "email": "furrypals@puki.com",
+            "tel": "050-8809999",
+            "imgUrlProfile": "",
+            "userType": "owner",
+            "ownerData": {
+                "title": "Cutest dogs ever!",
+                "desc": "Looking for a barn forever home",
+                "tags": [
+                    "baby pigs",
+                    "sweet cows"
+                ],
+                "imgUrls": [
+                    "piggy.jpg",
+                    "moo.jpg",
+                    "chicken.jpg"
+                ],
+                "location": {
+                    "name": "Haifa",
+                    "lat": 32.9898,
+                    "lng": 12.28
+                },
+                "reviews": [{
+                    "_id": "r107",
+                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                    "rate": 4,
+                    "by": {
+                        "_id": "u102",
+                        "fullName": "user2",
+                        "imgUrl": "/img/img2.jpg"
+                    }
+                }]
+            }
+        },
+        {
+            "_id": "a001",
+            "fullName": "Ari Cohen",
+            "userName": "ari123",
+            "password": "secret",
+            "email": "ari@gmail.com",
+            "tel": "050-777777",
+            "imgUrlProfile": "",
+            "userType": "adopter",
+            "adopterData": {
+                "dateOfBirth": "14/5/1991",
+                "ownPet": false,
+                "ownedPet": false,
+                "familyStatus": "",
+                "houseStatus": ""
+            }
+        },
+        {
+            "_id": "a002",
+            "fullName": "Alex Briggs",
+            "userName": "alex123",
+            "password": "secret",
+            "email": "alex@gmail.com",
+            "tel": "050-888888",
+            "imgUrlProfile": "",
+            "userData": {
+                "dateOfBirth": "13/2/1998",
+                "ownPet": false,
+                "ownedPet": false,
+                "familyStatus": "",
+                "houseStatus": ""
+            }
         }
-    ],
-    "numOfTreats": 6
-}],
-"adoptions": [{
-    "_id": "o1225",
-    "cretatedAt": 9898989,
-    "user": {
-        "_id": "u104",
-        "name": "Joe Hannigan"
-    },
-    "owner": {
-        "_id": "o102",
-        "name": "Purrfect Cats"
-    },
-    "pet": {
-        "_id": "p002",
-        "name": "Winston"
-    },
-    "status": "pending"
-}],
-"users": [{
-        "_id": "o001",
-        "fullName": "Farm Friends",
-        "userName": "farm_friend",
-        "password": "pukush",
-        "email": "farmfriend@puki.com",
-        "tel": "050-8809999",
-        "imgUrlProfile": "",
-        "userType": "owner",
-        "ownerData": {
-            "title": "Cutest barn yard animals",
-            "desc": "Looking for a barn forever home",
-            "tags": [
-                "baby pigs",
-                "sweet cows"
-            ],
-            "imgUrls": [
-                "piggy.jpg",
-                "moo.jpg",
-                "chicken.jpg"
-            ],
-            "location": {
-                "name": "Haifa",
-                "lat": 32.9898,
-                "lng": 12.28
-            },
-            "reviews": [{
-                "_id": "r107",
-                "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullName": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }]
-        }
-    },
-    {
-        "_id": "o002",
-        "fullName": "Doggy Daycare",
-        "userName": "doggy_daycare",
-        "password": "pukush",
-        "email": "doggydaycare@puki.com",
-        "tel": "050-8809999",
-        "imgUrlProfile": "",
-        "userType": "owner",
-        "ownerData": {
-            "title": "Cutest dogs ever!",
-            "desc": "Looking for a barn forever home",
-            "tags": [
-                "baby pigs",
-                "sweet cows"
-            ],
-            "imgUrls": [
-                "piggy.jpg",
-                "moo.jpg",
-                "chicken.jpg"
-            ],
-            "location": {
-                "name": "Haifa",
-                "lat": 32.9898,
-                "lng": 12.28
-            },
-            "reviews": [{
-                "_id": "r107",
-                "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullName": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }]
-        }
-    },
-    {
-        "_id": "o003",
-        "fullName": "Furry Pals",
-        "userName": "furry_pals",
-        "password": "pukush",
-        "email": "furrypals@puki.com",
-        "tel": "050-8809999",
-        "imgUrlProfile": "",
-        "userType": "owner",
-        "ownerData": {
-            "title": "Cutest dogs ever!",
-            "desc": "Looking for a barn forever home",
-            "tags": [
-                "baby pigs",
-                "sweet cows"
-            ],
-            "imgUrls": [
-                "piggy.jpg",
-                "moo.jpg",
-                "chicken.jpg"
-            ],
-            "location": {
-                "name": "Haifa",
-                "lat": 32.9898,
-                "lng": 12.28
-            },
-            "reviews": [{
-                "_id": "r107",
-                "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                "rate": 4,
-                "by": {
-                    "_id": "u102",
-                    "fullName": "user2",
-                    "imgUrl": "/img/img2.jpg"
-                }
-            }]
-        }
-    },
-    {
-        "_id": "a001",
-        "fullName": "Ari Cohen",
-        "userName": "ari123",
-        "password": "secret",
-        "email": "ari@gmail.com",
-        "tel": "050-777777",
-        "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
-        "userType": "adopter",
-        "adopterData": {
-            "dateOfBirth": "1991-05-14",
-            "ownPet": false,
-            "ownedPet": false,
-            "familyStatus": "",
-            "houseStatus": ""
-        }
-    },
-    {
-        "_id": "a002",
-        "fullName": "Alex Briggs",
-        "userName": "alex123",
-        "password": "secret",
-        "email": "alex@gmail.com",
-        "tel": "050-888888",
-        "imgUrlProfile": "",
-        "userType": "adopter",
-        "adopterData": {
-            "dateOfBirth": "1998-02-13",
-            "ownPet": false,
-            "ownedPet": false,
-            "familyStatus": "",
-            "houseStatus": ""
-        }
-    }
-]
+    ]
 }
