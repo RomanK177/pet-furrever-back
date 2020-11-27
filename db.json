@@ -243,115 +243,105 @@
                 }]
             }
         },
-        {
-            "_id": "o003",
-            "fullName": "Furry Pals",
-            "userName": "furry_pals",
-            "password": "pukush",
-            "email": "furrypals@puki.com",
-            "tel": "050-8809999",
-            "imgUrlProfile": "",
-            "userType": "owner",
-            "ownerData": {
-                "title": "Cutest dogs ever!",
-                "desc": "Looking for a barn forever home",
-                "tags": [
-                    "baby pigs",
-                    "sweet cows"
-                ],
-                "imgUrls": [
-                    "piggy.jpg",
-                    "moo.jpg",
-                    "chicken.jpg"
-                ],
-                "location": {
-                    "name": "Haifa",
-                    "lat": 32.9898,
-                    "lng": 12.28
-                },
-                "reviews": [{
+        "reviews": [{
+            "_id": "r107",
+            "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+            "rate": 4,
+            "by": {
+                "userId": "u102",
+                "fullName": "user2",
+                "imgUrl": "/img/img2.jpg"
+            }
+        }]
+    }
+}, {
+    "_id": "o002",
+    "fullName": "Doggy Daycare",
+    "userName": "doggy_daycare",
+    "password": "pukush",
+    "email": "doggydaycare@puki.com",
+    "tel": "050-8809999",
+    "imgUrlProfile": "",
+    "userType": "owner",
+    "ownerData": {
+        "title": "Cutest dogs ever!",
+        "desc": "Looking for a barn forever home",
+        "tags": [
+            "baby pigs",
+            "sweet cows"
+        ],
+        "imgUrls": [
+            "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467318/pet-furrever/owners/doggydaycare1_st6z9j.jpg",
+            "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467316/pet-furrever/owners/doggydaycare2_r88cwd.jpg",
+            "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467405/pet-furrever/owners/doggydaycare3_nlapr7.jpg"
+        ],
+        "location": {
+            "name": "Haifa",
+            "lat": 32.9898,
+            "lng": 12.28
+        },
+        "reviews": [{
                     "_id": "r107",
                     "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
                     "rate": 4,
                     "by": {
-                        "_id": "u102",
+                        "userId": "u102",
                         "fullName": "user2",
                         "imgUrl": "/img/img2.jpg"
                     }
-                }]
-            }
-        },
-        {
-            "_id": "o004",
-            "fullName": "Dogs For Life",
-            "userName": "dogs_forlife",
-            "password": "pukush",
-            "email": "dogsforlife@puki.com",
-            "tel": "050-8809999",
-            "imgUrlProfile": "",
-            "userType": "owner",
-            "ownerData": {
-                "title": "Cutest dogs ever!",
-                "desc": "Looking for a forever home for our beautiful, loving dogs",
-                "tags": [
-                    "puppies",
-                    "big dogs"
-                ],
-                "imgUrls": [
-                    "piggy.jpg",
-                    "moo.jpg",
-                    "chicken.jpg"
-                ],
-                "location": {
-                    "name": "Haifa",
-                    "lat": 32.9898,
-                    "lng": 12.28
-                },
-                "reviews": [{
-                    "_id": "r107",
-                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                    "rate": 4,
-                    "by": {
-                        "_id": "u102",
-                        "fullName": "user2",
-                        "imgUrl": "/img/img2.jpg"
-                    }
-                }]
-            }
-        },
-        {
-            "_id": "a001",
-            "fullName": "Ari Cohen",
-            "userName": "ari123",
-            "password": "secret",
-            "email": "ari@gmail.com",
-            "tel": "050-777777",
-            "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
-            "userType": "adopter",
-            "adopterData": {
-                "dateOfBirth": "1991-05-14",
-                "ownPet": false,
-                "ownedPet": false,
-                "familyStatus": "",
-                "houseStatus": ""
-            }
-        },
-        {
-            "_id": "a002",
-            "fullName": "Alex Briggs",
-            "userName": "alex123",
-            "password": "secret",
-            "email": "alex@gmail.com",
-            "tel": "050-888888",
-            "imgUrlProfile": "",
-            "userType": "adopter",
-            "adopterData": {
-                "dateOfBirth": "1998-02-13",
-                "ownPet": false,
-                "ownedPet": false,
-                "familyStatus": "",
-                "houseStatus": ""
-            }
-        }
-    ]
-}
+                }, <<
+                << << < HEAD {
+                    "_id": "a001",
+                    "fullName": "Ari Cohen",
+                    "userName": "ari123",
+                    "password": "secret",
+                    "email": "ari@gmail.com",
+                    "tel": "050-777777",
+                    "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
+                    "userType": "adopter",
+                    "adopterData": {
+                        "dateOfBirth": "1991-05-14",
+                        "ownPet": false,
+                        "ownedPet": false,
+                        "familyStatus": "",
+                        "houseStatus": "" ===
+                            === =
+                            "reviews": [{
+                                    "_id": "r107",
+                                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                                    "rate": 4,
+                                    "by": {
+                                        "userId": "u102",
+                                        "fullName": "user2",
+                                        "imgUrl": "/img/img2.jpg" >>>
+                                            >>> > 9 f10c2b1906cc83cf62ccf7fcc71f3cda3485cc4
+                                    }
+                                }, <<
+                                << << < HEAD {
+                                    "_id": "a002",
+                                    "fullName": "Alex Briggs",
+                                    "userName": "alex123",
+                                    "password": "secret",
+                                    "email": "alex@gmail.com",
+                                    "tel": "050-888888",
+                                    "imgUrlProfile": "",
+                                    "userType": "adopter",
+                                    "adopterData": {
+                                        "dateOfBirth": "1998-02-13",
+                                        "ownPet": false,
+                                        "ownedPet": false,
+                                        "familyStatus": "",
+                                        "houseStatus": "" ===
+                                            === =
+                                            "reviews": [{
+                                                "_id": "r107",
+                                                "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                                                "rate": 4,
+                                                "by": {
+                                                    "userId": "u102",
+                                                    "fullName": "user2",
+                                                    "imgUrl": "/img/img2.jpg" >>>
+                                                        >>> > 9 f10c2b1906cc83cf62ccf7fcc71f3cda3485cc4
+                                                }
+                                            }]
+                                    }
