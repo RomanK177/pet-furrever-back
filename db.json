@@ -9,7 +9,7 @@
             "age": 5,
             "adoptedAt": 9898989,
             "owner": {
-                "_id": "o001",
+                "_id": "o004",
                 "name": "Dogs for life",
                 "imgUrl": "joe1.jpg"
             },
@@ -119,13 +119,17 @@
             "age": 2,
             "adoptedAt": null,
             "owner": {
-                "_id": "o003",
-                "name": "Furry Pals",
+                "_id": "o001",
+                "name": "Farm Friends",
                 "imgUrl": "ashley1.jpg"
             },
             "description": "A very energetic litle piggy! Can herd sheep!",
             "imgUrls": [
-                "babe1.jpg", "babe2.jpg", "babe3.jpg", "babe4.jpg", "babe5.jpg"
+                "babe1.jpg",
+                "babe2.jpg",
+                "babe3.jpg",
+                "babe4.jpg",
+                "babe5.jpg"
             ],
             "tags": [
                 "pig",
@@ -144,6 +148,7 @@
             ],
             "numOfTreats": 20
         }
+
     ],
     "adoptions": [{
         "_id": "o1225",
@@ -277,16 +282,54 @@
             }
         },
         {
+            "_id": "o004",
+            "fullName": "Dogs For Life",
+            "userName": "dogs_forlife",
+            "password": "pukush",
+            "email": "dogsforlife@puki.com",
+            "tel": "050-8809999",
+            "imgUrlProfile": "",
+            "userType": "owner",
+            "ownerData": {
+                "title": "Cutest dogs ever!",
+                "desc": "Looking for a forever home for our beautiful, loving dogs",
+                "tags": [
+                    "puppies",
+                    "big dogs"
+                ],
+                "imgUrls": [
+                    "piggy.jpg",
+                    "moo.jpg",
+                    "chicken.jpg"
+                ],
+                "location": {
+                    "name": "Haifa",
+                    "lat": 32.9898,
+                    "lng": 12.28
+                },
+                "reviews": [{
+                    "_id": "r107",
+                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                    "rate": 4,
+                    "by": {
+                        "_id": "u102",
+                        "fullName": "user2",
+                        "imgUrl": "/img/img2.jpg"
+                    }
+                }]
+            }
+        },
+        {
             "_id": "a001",
             "fullName": "Ari Cohen",
             "userName": "ari123",
             "password": "secret",
             "email": "ari@gmail.com",
             "tel": "050-777777",
-            "imgUrlProfile": "",
+            "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
             "userType": "adopter",
             "adopterData": {
-                "dateOfBirth": "14/5/1991",
+                "dateOfBirth": "1991-05-14",
                 "ownPet": false,
                 "ownedPet": false,
                 "familyStatus": "",
@@ -301,8 +344,9 @@
             "email": "alex@gmail.com",
             "tel": "050-888888",
             "imgUrlProfile": "",
-            "userData": {
-                "dateOfBirth": "13/2/1998",
+            "userType": "adopter",
+            "adopterData": {
+                "dateOfBirth": "1998-02-13",
                 "ownPet": false,
                 "ownedPet": false,
                 "familyStatus": "",
