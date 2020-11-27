@@ -351,6 +351,24 @@
                 "familyStatus": "",
                 "houseStatus": ""
             }
+        },
+        {
+            "fullName": "Puki Lu",
+            "userName": "puki",
+            "password": "puki",
+            "email": "puki@puki.com",
+            "tel": "0",
+            "imgUrlProfile": "",
+            "userType": "adopter",
+            "adopterData": {
+                "dateOfBirth": "",
+                "ownPet": false,
+                "ownedPet": true,
+                "familyStatus": "single",
+                "houseStatus": "appartment"
+            },
+            "dateOfBirth": "2020-11-08",
+            "_id": "wsrYPr9"
         }
     ]
 }
