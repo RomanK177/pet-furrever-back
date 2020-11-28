@@ -238,170 +238,203 @@
             }
         },
         {
-            "_id": "o002",
-            "fullName": "Doggy Daycare",
-            "userName": "doggy_daycare",
-            "password": "pukush",
-            "email": "doggydaycare@puki.com",
-            "tel": "050-8809999",
-            "imgUrlProfile": "",
-            "userType": "owner",
-            "ownerData": {
-                "title": "Cutest dogs ever!",
-                "desc": "We love our dogs so much, and want to find the best home for them!",
-                "tags": [
-                    "friendly dogs",
-                    "big dogs"
-                ],
-                "imgUrls": [
-                    "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467318/pet-furrever/owners/doggydaycare1_st6z9j.jpg",
-                    "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467316/pet-furrever/owners/doggydaycare2_r88cwd.jpg",
-                    "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467405/pet-furrever/owners/doggydaycare3_nlapr7.jpg"
-                ],
-                "location": {
-                    "name": "Tel Aviv",
-                    "lat": 32.9898,
-                    "lng": 12.28
-                },
-                "reviews": [{
-                    "_id": "r107",
-                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                    "rate": 4,
-                    "by": {
-                        "userId": "u102",
-                        "fullName": "user2",
-                        "imgUrl": "/img/img2.jpg"
-                    }
-                }]
-            }
-        },
-        {
-            "_id": "o003",
-            "fullName": "Furry Pals",
-            "userName": "furry_pals",
-            "password": "pukush",
-            "email": "furrypals@puki.com",
-            "tel": "050-8809999",
-            "imgUrlProfile": "",
-            "userType": "owner",
-            "ownerData": {
-                "title": "Cutest dogs ever!",
-                "desc": "Looking for a barn forever home",
-                "tags": [
-                    "baby pigs",
-                    "sweet cows"
-                ],
-                "imgUrls": [
-                    "piggy.jpg",
-                    "moo.jpg",
-                    "chicken.jpg"
-                ],
-                "location": {
-                    "name": "Netanya",
-                    "lat": 32.9898,
-                    "lng": 12.28
-                },
-                "reviews": [{
-                    "_id": "r107",
-                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                    "rate": 4,
-                    "by": {
-                        "userId": "u102",
-                        "fullName": "user2",
-                        "imgUrl": "/img/img2.jpg"
-                    }
-                }]
-            }
-        },
-        {
-            "_id": "o004",
-            "fullName": "Dogs For Life",
-            "userName": "dogs_forlife",
-            "password": "pukush",
-            "email": "dogsforlife@puki.com",
-            "tel": "050-8809999",
-            "imgUrlProfile": "",
-            "userType": "owner",
-            "ownerData": {
-                "title": "Cutest dogs ever!",
-                "desc": "Looking for a forever home for our beautiful, loving dogs",
-                "tags": [
-                    "puppies",
-                    "big dogs"
-                ],
-                "imgUrls": [
-                    "piggy.jpg",
-                    "moo.jpg",
-                    "chicken.jpg"
-                ],
-                "location": {
-                    "name": "Haifa",
-                    "lat": 32.9898,
-                    "lng": 12.28
-                },
-                "reviews": [{
-                    "_id": "r107",
-                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
-                    "rate": 4,
-                    "by": {
-                        "userId": "u102",
-                        "fullName": "user2",
-                        "imgUrl": "/img/img2.jpg"
-                    }
-                }]
-            }
-        },
-        {
-            "_id": "a001",
-            "fullName": "Ari Cohen",
-            "userName": "ari123",
-            "password": "s.ecret",
-            "email": "ari@gmail.com",
-            "tel": "050-777777",
-            "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
-            "userType": "adopter",
-            "adopterData": {
-                "dateOfBirth": "1991-05-14",
-                "ownPet": false,
-                "ownedPet": false,
-                "familyStatus": "",
-                "houseStatus": ""
-            }
-        },
-        {
-            "_id": "a002",
-            "fullName": "Alex Briggs",
-            "userName": "alex123",
-            "password": "secret",
-            "email": "alex@gmail.com",
-            "tel": "050-888888",
-            "imgUrlProfile": "",
-            "userType": "adopter",
-            "adopterData": {
-                "dateOfBirth": "1998-02-13",
-                "ownPet": false,
-                "ownedPet": false,
-                "familyStatus": "",
-                "houseStatus": ""
-            }
-        },
-        {
-            "fullName": "Puki Lu",
-            "userName": "puki",
-            "password": "puki",
-            "email": "puki@puki.com",
-            "tel": "0",
-            "imgUrlProfile": "",
-            "userType": "adopter",
-            "adopterData": {
-                "dateOfBirth": "",
-                "ownPet": false,
-                "ownedPet": true,
-                "familyStatus": "single",
-                "houseStatus": "appartment"
-            },
-            "dateOfBirth": "2020-11-08",
-            "_id": "wsrYPr9"
+            "userName": "Dafna",
+            "_id": "c126",
+            "comment": "Looks tasty :)"
         }
-    ]
-}
+    ],
+    "numOfTreats": 28
+}, {
+    "name": "Esther",
+    "gender": "female",
+    "size": "large",
+    "type": "pig",
+    "breed": "Devon pig",
+    "age": "5",
+    "adoptedAt": "",
+    "owner": {},
+    "description": "Cuty and like belly rubs",
+    "imgUrls": [
+        "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571039/atjxpnjgzznnajcp5fgu.jpg",
+        "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571043/l2bqadaazm8bj5k6w551.jpg",
+        "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571047/dyfwijyxamdlwrqxkpy2.jpg"
+    ],
+    "tags": [],
+    "location": "Natanya",
+    "createdAt": 1606571078807,
+    "_id": "H3-C9Hn",
+    "numOfTreats": null
+}],
+"adoptions": [{
+    "_id": "o1225",
+    "cretatedAt": 9898989,
+    "user": {
+        "_id": "u104",
+        "name": "Joe Hannigan"
+    },
+    "owner": {
+        "_id": "o102",
+        "name": "Purrfect Cats"
+    },
+    "pet": {
+        "_id": "p002",
+        "name": "Winston"
+    },
+    "status": "pending"
+}],
+"users": [{
+        "_id": "o001",
+        "fullName": "Farm Friends",
+        "userName": "farm_friend",
+        "password": "pukush",
+        "email": "farmfriend@puki.com",
+        "tel": "050-8809999",
+        "imgUrlProfile": "",
+        "userType": "owner",
+        "ownerData": {
+            "title": "Cutest barn yard animals",
+            "desc": "We have the most precious farm animals that need a home! We are located in haifa, send us a message or give us a call. We'd love to hear from you!",
+            "tags": [
+                "baby pigs",
+                "sweet cows"
+            ],
+            "imgUrls": [
+                "piggy.jpg",
+                "moo.jpg",
+                "chicken.jpg"
+            ],
+            "location": {
+                "name": "Yokne'am",
+                "lat": 32.9898,
+                "lng": 12.28
+            },
+            {
+                "_id": "o003",
+                "fullName": "Furry Pals",
+                "userName": "furry_pals",
+                "password": "pukush",
+                "email": "furrypals@puki.com",
+                "tel": "050-8809999",
+                "imgUrlProfile": "",
+                "userType": "owner",
+                "ownerData": {
+                    "title": "Cutest dogs ever!",
+                    "desc": "Looking for a barn forever home",
+                    "tags": [
+                        "baby pigs",
+                        "sweet cows"
+                    ],
+                    "imgUrls": [
+                        "piggy.jpg",
+                        "moo.jpg",
+                        "chicken.jpg"
+                    ],
+                    "location": {
+                        "name": "Netanya",
+                        "lat": 32.9898,
+                        "lng": 12.28
+                    },
+                    "reviews": [{
+                        "_id": "r107",
+                        "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                        "rate": 4,
+                        "by": {
+                            "userId": "u102",
+                            "fullName": "user2",
+                            "imgUrl": "/img/img2.jpg"
+                        }
+                    }]
+                }
+            },
+            {
+                "_id": "o004",
+                "fullName": "Dogs For Life",
+                "userName": "dogs_forlife",
+                "password": "pukush",
+                "email": "dogsforlife@puki.com",
+                "tel": "050-8809999",
+                "imgUrlProfile": "",
+                "userType": "owner",
+                "ownerData": {
+                    "title": "Cutest dogs ever!",
+                    "desc": "Looking for a forever home for our beautiful, loving dogs",
+                    "tags": [
+                        "puppies",
+                        "big dogs"
+                    ],
+                    "imgUrls": [
+                        "piggy.jpg",
+                        "moo.jpg",
+                        "chicken.jpg"
+                    ],
+                    "location": {
+                        "name": "Haifa",
+                        "lat": 32.9898,
+                        "lng": 12.28
+                    },
+                    "reviews": [{
+                        "_id": "r107",
+                        "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
+                        "rate": 4,
+                        "by": {
+                            "userId": "u102",
+                            "fullName": "user2",
+                            "imgUrl": "/img/img2.jpg"
+                        }
+                    }]
+                }
+            },
+            {
+                "_id": "a001",
+                "fullName": "Ari Cohen",
+                "userName": "ari123",
+                "password": "s.ecret",
+                "email": "ari@gmail.com",
+                "tel": "050-777777",
+                "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
+                "userType": "adopter",
+                "adopterData": {
+                    "dateOfBirth": "1991-05-14",
+                    "ownPet": false,
+                    "ownedPet": false,
+                    "familyStatus": "",
+                    "houseStatus": ""
+                }
+            },
+            {
+                "_id": "a002",
+                "fullName": "Alex Briggs",
+                "userName": "alex123",
+                "password": "secret",
+                "email": "alex@gmail.com",
+                "tel": "050-888888",
+                "imgUrlProfile": "",
+                "userType": "adopter",
+                "adopterData": {
+                    "dateOfBirth": "1998-02-13",
+                    "ownPet": false,
+                    "ownedPet": false,
+                    "familyStatus": "",
+                    "houseStatus": ""
+                }
+            },
+            {
+                "fullName": "Puki Lu",
+                "userName": "puki",
+                "password": "puki",
+                "email": "puki@puki.com",
+                "tel": "0",
+                "imgUrlProfile": "",
+                "userType": "adopter",
+                "adopterData": {
+                    "dateOfBirth": "",
+                    "ownPet": false,
+                    "ownedPet": true,
+                    "familyStatus": "single",
+                    "houseStatus": "appartment"
+                },
+                "dateOfBirth": "2020-11-08",
+                "_id": "wsrYPr9"
+            }
+        ]
+    }
