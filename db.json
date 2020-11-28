@@ -12,7 +12,10 @@
       "owner": {
         "_id": "o004",
         "name": "Dogs for life",
-        "imgUrl": "joe1.jpg"
+        "imgUrl": "joe1.jpg",
+        "email": "dogsforlife@puki.com",
+        "tel": "050-8809999",
+        "location": "Haifa"
       },
       "description": "The sweetest dog who loves to cuddle and play fetch.",
       "imgUrls": [
@@ -34,7 +37,7 @@
           "comment": "How is he still available for adoption?! He's adorable."
         }
       ],
-      "numOfTreats": 35
+      "numOfTreats": 37
     },
     {
       "_id": "p002",
@@ -48,7 +51,10 @@
       "owner": {
         "_id": "o002",
         "name": "Doggy Daycare",
-        "imgUrl": "ari.jpg"
+        "imgUrl": "ari.jpg",
+        "email": "doggydaycare@puki.com",
+        "tel": "050-8809999",
+        "location": "Tel Aviv"
       },
       "description": "Sweetest pup. He's incredibly smart. Loves to play frisbee, and run!",
       "imgUrls": [
@@ -75,7 +81,7 @@
           "comment": "How is he still available for adoption?! He's adorable."
         }
       ],
-      "numOfTreats": 25
+      "numOfTreats": 28
     },
     {
       "_id": "p003",
@@ -89,7 +95,10 @@
       "owner": {
         "_id": "o003",
         "name": "Furry Pals",
-        "imgUrl": "ashley1.jpg"
+        "imgUrl": "ashley1.jpg",
+        "email": "furrypals@puki.com",
+        "tel": "050-8809999",
+        "location": "Netanya"
       },
       "description": "Grumpy litle furr ball.",
       "imgUrls": [
@@ -111,7 +120,7 @@
           "comment": "How is she still available for adoption?! She's adorable."
         }
       ],
-      "numOfTreats": 31
+      "numOfTreats": 38
     },
     {
       "_id": "p004",
@@ -125,7 +134,10 @@
       "owner": {
         "_id": "o001",
         "name": "Farm Friends",
-        "imgUrl": "ashley1.jpg"
+        "imgUrl": "ashley1.jpg",
+        "email": "farmfriend@puki.com",
+        "tel": "050-8809999",
+        "location": "Yokne'am"
       },
       "description": "A very energetic litle piggy! Can herd sheep!",
       "imgUrls": [
@@ -151,9 +163,8 @@
           "comment": "Looks tasty :)"
         }
       ],
-      "numOfTreats": 20
+      "numOfTreats": 28
     }
-    
   ],
   "adoptions": [
     {
@@ -186,7 +197,7 @@
       "userType": "owner",
       "ownerData": {
         "title": "Cutest barn yard animals",
-        "desc": "Looking for a barn forever home",
+        "desc": "We have the most precious farm animals that need a home! We are located in haifa, send us a message or give us a call. We'd love to hear from you!",
         "tags": [
           "baby pigs",
           "sweet cows"
@@ -197,7 +208,7 @@
           "chicken.jpg"
         ],
         "location": {
-          "name": "Haifa",
+          "name": "Yokne'am",
           "lat": 32.9898,
           "lng": 12.28
         },
@@ -226,10 +237,10 @@
       "userType": "owner",
       "ownerData": {
         "title": "Cutest dogs ever!",
-        "desc": "Looking for a barn forever home",
+        "desc": "We love our dogs so much, and want to find the best home for them!",
         "tags": [
-          "baby pigs",
-          "sweet cows"
+          "friendly dogs",
+          "big dogs"
         ],
         "imgUrls": [
           "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467318/pet-furrever/owners/doggydaycare1_st6z9j.jpg",
@@ -237,7 +248,7 @@
           "https://res.cloudinary.com/druhd0ddz/image/upload/v1606467405/pet-furrever/owners/doggydaycare3_nlapr7.jpg"
         ],
         "location": {
-          "name": "Haifa",
+          "name": "Tel Aviv",
           "lat": 32.9898,
           "lng": 12.28
         },
@@ -277,7 +288,7 @@
           "chicken.jpg"
         ],
         "location": {
-          "name": "Haifa",
+          "name": "Netanya",
           "lat": 32.9898,
           "lng": 12.28
         },
@@ -339,7 +350,7 @@
       "_id": "a001",
       "fullName": "Ari Cohen",
       "userName": "ari123",
-      "password": "secret",
+      "password": "s.ecret",
       "email": "ari@gmail.com",
       "tel": "050-777777",
       "imgUrlProfile": "http://res.cloudinary.com/druhd0ddz/image/upload/v1606429310/hqhamqruuvc22cx9z8ok.jpg",
