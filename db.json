@@ -27,14 +27,22 @@
       ],
       "comments": [
         {
-          "userName": "Guest",
-          "_id": "c123",
-          "comment": "I just sent him a treat! He's so cute!"
+          "_id": "c107",
+          "txt": "I just sent him a treat! He's so cute!",
+          "by": {
+            "userId": "u102",
+            "fullName": "Joe",
+            "imgUrl": "/img/img2.jpg"
+          }
         },
         {
-          "userName": "Alex",
-          "_id": "c124",
-          "comment": "How is he still available for adoption?! He's adorable."
+          "_id": "c108",
+          "txt": "How is he still available for adoption?! He's adorable.",
+          "by": {
+            "userId": "u102",
+            "fullName": "Alex",
+            "imgUrl": "/img/img2.jpg"
+          }
         }
       ],
       "numOfTreats": 37
@@ -71,14 +79,22 @@
       ],
       "comments": [
         {
-          "userName": "Guest",
-          "_id": "c123",
-          "comment": "I just sent him a treat! He's so cute!"
+          "_id": "c107",
+          "txt": "I just sent him a treat! He's so cute!",
+          "by": {
+            "userId": "u102",
+            "fullName": "Joe",
+            "imgUrl": "/img/img2.jpg"
+          }
         },
         {
-          "userName": "Alex",
-          "_id": "c124",
-          "comment": "How is he still available for adoption?! He's adorable."
+          "_id": "c108",
+          "txt": "How is he still available for adoption?! He's adorable.",
+          "by": {
+            "userId": "u102",
+            "fullName": "Alex",
+            "imgUrl": "/img/img2.jpg"
+          }
         }
       ],
       "numOfTreats": 28
@@ -110,14 +126,22 @@
       ],
       "comments": [
         {
-          "userName": "Guest",
-          "_id": "c123",
-          "comment": "I just sent her a treat! She's so cute!"
+          "_id": "c107",
+          "txt": "I just sent him a treat! He's so cute!",
+          "by": {
+            "userId": "u102",
+            "fullName": "Joe",
+            "imgUrl": "/img/img2.jpg"
+          }
         },
         {
-          "userName": "Alex",
-          "_id": "c124",
-          "comment": "How is she still available for adoption?! She's adorable."
+          "_id": "c108",
+          "txt": "How is he still available for adoption?! He's adorable.",
+          "by": {
+            "userId": "u102",
+            "fullName": "Alex",
+            "imgUrl": "/img/img2.jpg"
+          }
         }
       ],
       "numOfTreats": 38
@@ -153,14 +177,94 @@
       ],
       "comments": [
         {
-          "userName": "Riki",
-          "_id": "c125",
-          "comment": "So adorable!!"
+          "_id": "c107",
+          "txt": "I just sent him a treat! He's so cute!",
+          "by": {
+            "userId": "u102",
+            "fullName": "Joe",
+            "imgUrl": "/img/img2.jpg"
+          }
         },
         {
-          "userName": "Dafna",
-          "_id": "c126",
-          "comment": "Looks tasty :)"
+          "_id": "c108",
+          "txt": "How is he still available for adoption?! He's adorable.",
+          "by": {
+            "userId": "u102",
+            "fullName": "Alex",
+            "imgUrl": "/img/img2.jpg"
+          }
+        },
+        {
+          "txt": "omg so cute!",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "acuij"
+        },
+        {
+          "txt": "I just requested to adopt him!! So excited!",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "VaYsC"
+        },
+        {
+          "txt": "Why is he so cute?!!!",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "QYDGZ"
+        },
+        {
+          "txt": "so cute!",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "V8j8y"
+        },
+        {
+          "txt": "obsessssed",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "xhZB3"
+        },
+        {
+          "txt": "oink oink",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "i3sxf"
+        },
+        {
+          "txt": "CUTIEEEE",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "YdHAj"
+        },
+        {
+          "txt": "hi",
+          "by": {
+            "userId": null,
+            "fullName": "Guest",
+            "imgUrl": null
+          },
+          "_id": "LDCsS"
         }
       ],
       "numOfTreats": 28
