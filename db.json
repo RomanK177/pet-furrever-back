@@ -202,69 +202,6 @@
             "imgUrl": null
           },
           "_id": "acuij"
-        },
-        {
-          "txt": "I just requested to adopt him!! So excited!",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "VaYsC"
-        },
-        {
-          "txt": "Why is he so cute?!!!",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "QYDGZ"
-        },
-        {
-          "txt": "so cute!",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "V8j8y"
-        },
-        {
-          "txt": "obsessssed",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "xhZB3"
-        },
-        {
-          "txt": "oink oink",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "i3sxf"
-        },
-        {
-          "txt": "CUTIEEEE",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "YdHAj"
-        },
-        {
-          "txt": "hi",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "LDCsS"
         }
       ],
       "numOfTreats": 28
@@ -277,7 +214,14 @@
       "breed": "Devon pig",
       "age": "5",
       "adoptedAt": "",
-      "owner": {},
+      "owner": {
+        "_id": "o001",
+        "name": "Farm Friends",
+        "imgUrl": "ashley1.jpg",
+        "email": "farmfriend@puki.com",
+        "tel": "050-8809999",
+        "location": "Yokne'am"
+      },
       "description": "Cuty and like belly rubs",
       "imgUrls": [
         "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571039/atjxpnjgzznnajcp5fgu.jpg",
@@ -288,6 +232,7 @@
       "location": "Natanya",
       "createdAt": 1606571078807,
       "_id": "H3-C9Hn",
+      "comments": [],
       "numOfTreats": null
     }
   ],
