@@ -193,15 +193,6 @@
             "fullName": "Alex",
             "imgUrl": "/img/img2.jpg"
           }
-        },
-        {
-          "txt": "omg so cute!",
-          "by": {
-            "userId": null,
-            "fullName": "Guest",
-            "imgUrl": null
-          },
-          "_id": "acuij"
         }
       ],
       "numOfTreats": 28
@@ -245,12 +236,29 @@
         "name": "Joe Hannigan"
       },
       "owner": {
-        "_id": "o102",
-        "name": "Purrfect Cats"
+        "_id": "o003",
+        "name": "Furry Pals"
       },
       "pet": {
         "_id": "p002",
         "name": "Winston"
+      },
+      "status": "pending"
+    },
+    {
+      "_id": "ahuVj",
+      "createdAt": 1606592908845,
+      "user": {
+        "_id": "a002",
+        "name": "Alex Briggs"
+      },
+      "owner": {
+        "_id": "o001",
+        "name": "Farm Friends"
+      },
+      "pet": {
+        "_id": "p004",
+        "name": "Babe"
       },
       "status": "pending"
     }
