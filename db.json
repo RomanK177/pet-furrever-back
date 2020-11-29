@@ -20,7 +20,7 @@
       "description": "The sweetest dog who loves to cuddle and play fetch",
       "about": "We found this cute little guy roaming the streets of Haifa, and even though you could tell that he'd been through it, from the moment we picked him up he was nothing but loving and sweet. He literally wags his tail all the time. He  also loves to cuddle and play fetch. A true bundle of joy.",
       "imgUrls": [
-        "max1.jpg"
+        "max1.jpg", "max2.jpg", "max3.jpg", "max4.jpg", "max5.jpg"
       ],
       "tags": [
         "good with children",
@@ -121,7 +121,7 @@
       "description": "Grumpy and sweet little furr ball.",
       "about": "Dorin is the funniest grumpy cat. Don't be fooled by that face, even though she looks grumpy she is so sweet. She acts more like a dog than a cat, she loves to cuddle and obsessed with lazer beams. We found her in an alley way, and based off our vet's analysis she had recently given birth to kittens. She is spayed and up to date with all her shots! ",
       "imgUrls": [
-        "dorin1.jpg"
+        "dorin1.jpg", "dorin2.jpg", "dorin3.webp", "dorin4.jpg", "dorin5.jpg"
       ],
       "tags": [
         "lazy",
@@ -238,7 +238,8 @@
       "imgUrls": [
         "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571039/atjxpnjgzznnajcp5fgu.jpg",
         "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571043/l2bqadaazm8bj5k6w551.jpg",
-        "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571047/dyfwijyxamdlwrqxkpy2.jpg"
+        "http://res.cloudinary.com/druhd0ddz/image/upload/v1606571047/dyfwijyxamdlwrqxkpy2.jpg",
+        "esther4.jpg", "esther5.jpg"
       ],
       "tags": [],
       "location": "Natanya",
