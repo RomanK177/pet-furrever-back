@@ -271,7 +271,7 @@
       "password": "pukush",
       "email": "farmfriend@puki.com",
       "tel": "050-8809999",
-      "imgUrlProfile": "",
+      "imgUrlProfile": "ashley1.jpg",
       "userType": "owner",
       "ownerData": {
         "title": "Cutest barn yard animals",
@@ -281,9 +281,9 @@
           "sweet cows"
         ],
         "imgUrls": [
-          "piggy.jpg",
-          "moo.jpg",
-          "chicken.jpg"
+          "farmfriend1.jpg",
+          "farmfriend2.jpg",
+          "farmfriend3.jpg"
         ],
         "location": {
           "name": "Yokne'am",
@@ -331,7 +331,7 @@
       "password": "pukush",
       "email": "doggydaycare@puki.com",
       "tel": "050-8809999",
-      "imgUrlProfile": "",
+      "imgUrlProfile": "ari.jpg",
       "userType": "owner",
       "ownerData": {
         "title": "Cutest dogs ever!",
@@ -371,7 +371,7 @@
       "password": "pukush",
       "email": "furrypals@puki.com",
       "tel": "050-8809999",
-      "imgUrlProfile": "",
+      "imgUrlProfile": "ashley1.jpg",
       "userType": "owner",
       "ownerData": {
         "title": "Cutest dogs ever!",
@@ -491,7 +491,7 @@
       "password": "pukush",
       "email": "dogsforlife@puki.com",
       "tel": "050-8809999",
-      "imgUrlProfile": "",
+      "imgUrlProfile": "joe1.jpg",
       "userType": "owner",
       "ownerData": {
         "title": "Cutest dogs ever!",
