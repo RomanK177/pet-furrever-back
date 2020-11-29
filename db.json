@@ -432,56 +432,6 @@
               "imgUrl": null
             },
             "_id": "jLQRX"
-          },
-          {
-            "txt": "ggggg",
-            "rate": 5,
-            "by": {
-              "userId": null,
-              "fullName": "Guest",
-              "imgUrl": null
-            },
-            "_id": "rR9Yn"
-          },
-          {
-            "txt": "aaa",
-            "rate": 5,
-            "by": {
-              "userId": null,
-              "fullName": "Guest",
-              "imgUrl": null
-            },
-            "_id": "u7TaL"
-          },
-          {
-            "txt": "fff",
-            "rate": 5,
-            "by": {
-              "userId": null,
-              "fullName": "Guest",
-              "imgUrl": null
-            },
-            "_id": "RJXd3"
-          },
-          {
-            "txt": "gg",
-            "rate": 5,
-            "by": {
-              "userId": null,
-              "fullName": "Guest",
-              "imgUrl": null
-            },
-            "_id": "olcPi"
-          },
-          {
-            "txt": "ff",
-            "rate": 5,
-            "by": {
-              "userId": null,
-              "fullName": "Guest",
-              "imgUrl": null
-            },
-            "_id": "ERSo6"
           }
         ]
       }
