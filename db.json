@@ -142,6 +142,14 @@
             "fullName": "Alex",
             "imgUrl": "/img/img2.jpg"
           }
+        },
+        {
+          "txt": "sooo cute",
+          "by": {
+            "userId": "a002",
+            "fullName": "Alex Briggs"
+          },
+          "_id": "nZaHP"
         }
       ],
       "numOfTreats": 38
@@ -193,6 +201,30 @@
             "fullName": "Alex",
             "imgUrl": "/img/img2.jpg"
           }
+        },
+        {
+          "txt": "hi",
+          "by": {
+            "userId": "a002",
+            "fullName": "Alex Briggs"
+          },
+          "_id": "Fs0Qa"
+        },
+        {
+          "txt": "omg",
+          "by": {
+            "userId": "a002",
+            "fullName": "Alex Briggs"
+          },
+          "_id": "gjJOm"
+        },
+        {
+          "txt": "hi",
+          "by": {
+            "userId": "a002",
+            "fullName": "Alex Briggs"
+          },
+          "_id": "sb13F"
         }
       ],
       "numOfTreats": 28
@@ -242,23 +274,6 @@
       "pet": {
         "_id": "p002",
         "name": "Winston"
-      },
-      "status": "pending"
-    },
-    {
-      "_id": "ahuVj",
-      "createdAt": 1606592908845,
-      "user": {
-        "_id": "a002",
-        "name": "Alex Briggs"
-      },
-      "owner": {
-        "_id": "o001",
-        "name": "Farm Friends"
-      },
-      "pet": {
-        "_id": "p004",
-        "name": "Babe"
       },
       "status": "pending"
     }
