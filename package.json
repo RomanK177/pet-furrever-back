@@ -1,0 +1,30 @@
+{
+  "name": "pet-furrever-back",
+  "version": "1.0.0",
+  "description": "pet adoption",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanK177/pet-furrever-back.git"
+  },
+  "author": "Pet FURRever",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanK177/pet-furrever-back/issues"
+  },
+  "homepage": "https://github.com/RomanK177/pet-furrever-back#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.3",
+    "socket.io": "^3.0.3"
+  }
+}
