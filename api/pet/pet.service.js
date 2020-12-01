@@ -51,12 +51,19 @@ async function query(requestQuery) {
                 foreignField: '_id',
                 as: 'owner'
             },
-            
         }
     ]
 
     if (queryFilter) {
-        aggQuery['$match'] = queryFilter;
+        aggQuery.push({$match: queryFilter});
+    }
+
+    if (requestQuery._sort) {
+        const sortField = requestQuery._sort.toLowerCase()
+        const allowedSortFields = ['name', 'type', 'size'];
+        if (allowedSortFields.includes(sortField)) {
+            aggQuery.push({ $sort : { [sortField]: 1 } });
+        }
     }
 
     try {
