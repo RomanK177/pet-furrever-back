@@ -223,7 +223,7 @@
           "_id": "gjJOm"
         }
       ],
-      "numOfTreats": 32
+      "numOfTreats": 36
     },
     {
       "name": "Esther",
@@ -232,7 +232,7 @@
       "type": "Pig",
       "breed": "Devon Pig",
       "age": "5",
-      "adoptedAt": "",
+      "adoptedAt": null,
       "owner": {
         "_id": "o001",
         "name": "Farm Friends",
@@ -261,18 +261,35 @@
   "adoptions": [
     {
       "_id": "o1225",
-      "cretatedAt": 9898989,
+      "cretatedAt": 1549312452,
       "user": {
-        "_id": "u104",
-        "name": "Joe Hannigan"
+        "_id": "a001",
+        "name": "Ari Cohen"
       },
       "owner": {
-        "_id": "o003",
-        "name": "Furry Pals"
+        "_id": "o002",
+        "name": "Doggy Daycare"
       },
       "pet": {
         "_id": "p002",
         "name": "Winston"
+      },
+      "status": "declined"
+    },
+    {
+      "_id": "ETYHVW6",
+      "createdAt": 1606810633404,
+      "user": {
+        "_id": "a002",
+        "name": "Alex Briggs"
+      },
+      "owner": {
+        "_id": "o001",
+        "name": "Farm Friends"
+      },
+      "pet": {
+        "_id": "p004",
+        "name": "Babe"
       },
       "status": "pending"
     }
@@ -376,7 +393,8 @@
             }
           }
         ]
-      }
+      },
+      "favorites": []
     },
     {
       "_id": "o003",
@@ -573,7 +591,11 @@
         "familyStatus": "",
         "houseStatus": ""
       },
-      "favorites": []
+      "favorites": [
+        "H3-C9Hn",
+        "p004",
+        "p002"
+      ]
     },
     {
       "fullName": "Puki Lu",
