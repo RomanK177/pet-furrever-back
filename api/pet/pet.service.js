@@ -11,6 +11,7 @@ module.exports = {
     add
 }
 
+// TODO: SORT AND IN STOCK
 async function query(requestQuery) {
     let mainFilter = []
     let queryFilter = null
@@ -143,7 +144,6 @@ async function update(pet) {
 }
 
 async function add(pet) {
-    pet.ownerId = ObjectId(pet.ownerId);
     const collection = await dbService.getCollection('pets');
     try {
         await collection.insertOne(pet);
