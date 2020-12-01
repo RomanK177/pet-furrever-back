@@ -13,7 +13,7 @@ async function getPet(req, res) {
     const pet = await petService.getById(req.params.id);
     res.send(pet);
 }
-  
+
 async function removePet(req, res) {
     await petService.remove(req.params.id);
     res.end();
@@ -21,6 +21,7 @@ async function removePet(req, res) {
 
 async function createPet(req, res) {
     let pet = req.body;
+    console.log('Creating pet', pet, req.session)
     pet.ownerId = req.session.user._id
     await petService.add(pet);
     res.send(pet);
