@@ -35,21 +35,30 @@ async function updatePet(req, res) {
 async function addComment(req, res) {
     let comment = req.body;
     let petId = req.params.id;
+    comment.by = {};
     console.log(petId)
-    comment.by = req.session.user;
-    if (!comment.by) {
-        comment.by = '{ userId: "null", fullName: "Guest", imgUrl: "guest.jpg" }'
+    if (!req.session.user) {
+        comment.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
     } else {
-        comment.by.userId = req.session.user.userId;
+        comment.by.userId = req.session.user._id;
         comment.by.fullName = req.session.user.fullName;
         comment.by.imgUrl = req.session.user.imgUrlProfile;
     }
     try {
         comment = await petService.addComment(petId, comment);
-        // comment.byUser = req.session.user;
-        // TODO - need to find aboutUser?
-        // review.aboutUser = {}
-        res.send(comment);
+        res.json(comment);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+async function addTreat(req, res) {
+    let petId = req.params.id;
+    console.log(petId)
+    try {
+        const treats = await petService.addLike(petId);
+        res.json({treats});
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
@@ -62,5 +71,6 @@ module.exports = {
     removePet,
     createPet,
     updatePet,
-    addComment
+    addComment,
+    addTreat
 }

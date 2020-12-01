@@ -7,7 +7,8 @@ module.exports = {
     getByUserName,
     remove,
     update,
-    add
+    add,
+    addReview
 }
 
 async function query(filterBy = {}) {
@@ -85,6 +86,20 @@ async function add(user) {
         return user;
     } catch (err) {
         console.log(`ERROR: cannot insert user`)
+        throw err;
+    }
+}
+
+async function addReview(ownerId, review) {
+    const collection = await dbService.getCollection('users')
+    if (review.by.userId) review.by.userId = ObjectId(review.by.userId);
+    try {
+        const result = await collection.updateOne({ _id: ObjectId(ownerId) },
+            { $push: { "ownerData.reviews": review } });
+        const owner = await getById(ownerId)
+        return owner;
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
         throw err;
     }
 }
