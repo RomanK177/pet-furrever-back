@@ -8,7 +8,8 @@ module.exports = {
     getById,
     remove,
     update,
-    add
+    add,
+    addComment
 }
 
 // TODO: SORT AND IN STOCK
@@ -150,6 +151,22 @@ async function add(pet) {
         return pet;
     } catch (err) {
         console.log(`ERROR: cannot insert pet`)
+        throw err;
+    }
+}
+
+
+async function addComment(petId, comment) {
+    const collection = await dbService.getCollection('pet')
+    comment.by.userId = ObjectId(comment.by.userId);
+    // comment.aboutUserId = ObjectId(comment.aboutUserId);
+    console.log(comment)
+    try {
+        await collection.updateOne({ _id: petId },
+            { $push: { comments: { comment } } });
+        return comment;
+    } catch (err) {
+        console.log(`ERROR: cannot insert user`)
         throw err;
     }
 }
