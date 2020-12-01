@@ -1,3 +1,3 @@
 module.exports = {
-  "dbURL": "mongodb://localhost:27017",
+  "dbURL": "mongodb+srv://petFurrever:petFurrever@cluster0.4i2yx.mongodb.net/PetFurrverDB?retryWrites=true&w=majority",
 }

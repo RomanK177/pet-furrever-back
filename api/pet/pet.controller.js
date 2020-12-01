@@ -4,6 +4,7 @@ const logger = require('../../services/logger.service');
 // PET CRUD //
 
 async function getPets(req, res) {
+    // `pets?_sort=${sortStr}${filterStr}`
     const pets = await petService.query(req.query);
     res.send(pets);
 }
@@ -20,13 +21,13 @@ async function removePet(req, res) {
 
 async function createPet(req, res) {
     const pet = req.body;
-    await petService.save(pet);
+    await petService.add(pet);
     res.send(pet);
 }
 
 async function updatePet(req, res) {
     const pet = req.body;
-    await petService.save(pet);
+    await petService.update(pet);
     res.send(pet);
 }
 

@@ -4,11 +4,13 @@ const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+
+const app = express()
+
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 // Express App Config
-const app = express()
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(session({
@@ -37,9 +39,9 @@ const connectSockets = require('./api/socket/socket.routes');
 
 // routes
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.user('/api/pet', petRoutes);
-app.use('/api/adoption', adoptionRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/pets', petRoutes);
+app.use('/api/adoptions', adoptionRoutes);
 connectSockets(io)
 
 app.get('/**', (req, res) => {
@@ -47,7 +49,7 @@ app.get('/**', (req, res) => {
 })
 
 const logger = require('./services/logger.service')
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 http.listen(port, () => {
     logger.info('Server is running on port: ' + port)
 });

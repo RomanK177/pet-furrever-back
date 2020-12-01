@@ -1,12 +1,10 @@
-
 const dbService = require('../../services/db.service')
-const reviewService = require('../review/review.service')
 const ObjectId = require('mongodb').ObjectId
 
 module.exports = {
     query,
     getById,
-    getByEmail,
+    getByUserName,
     remove,
     update,
     add
@@ -14,7 +12,7 @@ module.exports = {
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection('users')
     try {
         const users = await collection.find(criteria).toArray();
         users.forEach(user => delete user.password);
@@ -27,7 +25,7 @@ async function query(filterBy = {}) {
 }
 
 async function getById(userId) {
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection('users')
     try {
         const user = await collection.findOne({ '_id': ObjectId(userId) })
         delete user.password
@@ -45,19 +43,20 @@ async function getById(userId) {
         throw err;
     }
 }
-async function getByEmail(email) {
-    const collection = await dbService.getCollection('user')
+
+async function getByUserName(userName) {
+    const collection = await dbService.getCollection('users')
     try {
-        const user = await collection.findOne({ email })
+        const user = await collection.findOne({ userName })
         return user
     } catch (err) {
-        console.log(`ERROR: while finding user ${email}`)
+        console.log(`ERROR: while finding user ${userName}`)
         throw err;
     }
 }
 
 async function remove(userId) {
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection('users')
     try {
         await collection.deleteOne({ '_id': ObjectId(userId) })
     } catch (err) {
@@ -67,11 +66,11 @@ async function remove(userId) {
 }
 
 async function update(user) {
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection('users')
     user._id = ObjectId(user._id);
 
     try {
-        await collection.replaceOne({ _id: user._id }, { $set: user })
+        await collection.replaceOne({ _id: user._id }, { user })
         return user
     } catch (err) {
         console.log(`ERROR: cannot update user ${user._id}`)
@@ -80,7 +79,7 @@ async function update(user) {
 }
 
 async function add(user) {
-    const collection = await dbService.getCollection('user')
+    const collection = await dbService.getCollection('users')
     try {
         await collection.insertOne(user);
         return user;

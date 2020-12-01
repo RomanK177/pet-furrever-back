@@ -13,7 +13,7 @@ async function getUsers(req, res) {
     res.send(users)
 }
 
-async function deleteUser(req, res) {
+async function removeUser(req, res) {
     await userService.remove(req.params.id)
     res.end()
 }
@@ -24,9 +24,16 @@ async function updateUser(req, res) {
     res.send(user)
 }
 
+async function createUser(req, res) {
+    const user = req.body;
+    await userService.add(user)
+    res.send(user)
+}
+
 module.exports = {
     getUser,
     getUsers,
-    deleteUser,
-    updateUser
+    removeUser,
+    updateUser,
+    createUser
 }
