@@ -20,7 +20,8 @@ async function removePet(req, res) {
 }
 
 async function createPet(req, res) {
-    const pet = req.body;
+    let pet = req.body;
+    pet.ownerId = req.session.user._id
     await petService.add(pet);
     res.send(pet);
 }
