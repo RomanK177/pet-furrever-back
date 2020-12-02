@@ -54,6 +54,7 @@ async function update(adoption) {
 }
 
 async function add(adoption) {
+    const collection = await dbService.getCollection('adoptions');
     try {
         await collection.insertOne(adoption);
         return adoption;
