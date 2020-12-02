@@ -1,23 +1,23 @@
-const adoptionService = require('./aadoption.service');
+const adoptionService = require('./adoption.service');
 const logger = require('../../services/logger.service');
 
 
-async function getAadoptions(req, res) {
-    const aadoption = await adoptionService.query(req.query);
-    res.send(aadoption);
+async function getAdoptions(req, res) {
+    const adoption = await adoptionService.query(req.query);
+    res.send(adoption);
 }
 
-async function getAadoption(req, res) {
+async function getAdoption(req, res) {
     const adoption = await adoptionService.getById(req.params.id);
     res.send(adoption);
 }
 
-async function removeAadoption(req, res) {
-    await aaadoptionService.remove(req.params.id);
+async function removeAdoption(req, res) {
+    await adoptionService.remove(req.params.id);
     res.end();
 }
 
-async function createAadoption(req, res) {
+async function createAdoption(req, res) {
     let adoption = req.body;
     adoption.user._id = req.session.user._id
     adoption.user.name = req.session.user.name
@@ -30,16 +30,16 @@ async function createAadoption(req, res) {
     }
 }
 
-async function updateAadoption(req, res) {
+async function updateAdoption(req, res) {
     const adoption = req.body;
     await adoptionService.update(adoption);
     res.send(adoption);
 }
 
 module.exports = {
-    getAadoptions,
-    getAadoption,
-    removeAadoption,
-    createAadoption,
-    updateAadoption
+    getAdoptions,
+    getAdoption,
+    removeAdoption,
+    createAdoption,
+    updateAdoption
 }
