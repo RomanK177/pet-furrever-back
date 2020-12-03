@@ -1,28 +1,11 @@
 const adoptionService = require('./adoption.service');
 const logger = require('../../services/logger.service');
+const petService = require('../pet/pet.service');
 
 
-async function getAdoptions(req, res) {
-    const adoption = await adoptionService.query(req.query);
-    res.send(adoption);
-}
-
-async function getAdoption(req, res) {
-    const adoption = await adoptionService.getById(req.params.id);
-    res.send(adoption);
-}
-
-async function removeAdoption(req, res) {
-    await adoptionService.remove(req.params.id);
-    res.end();
-}
-
-async function createAdoption(req, res) {
-    let adoption = req.body;
-    adoption.user._id = req.session.user._id
-    adoption.user.name = req.session.user.name
+async function getAdoptionRequests(req, res) {
     try {
-        adoption = await adoptionService.add(adoption);
+        const adoption = await adoptionService.query(req.query);
         res.send(adoption);
     } catch (err) {
         console.log(`ERROR: ${err}`)
@@ -30,16 +13,70 @@ async function createAdoption(req, res) {
     }
 }
 
-async function updateAdoption(req, res) {
+async function getAdoptionRequest(req, res) {
+    try {
+        const adoption = await adoptionService.getById(req.params.id);
+        res.send(adoption);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+async function removeAdoptionRequest(req, res) {
+    try {
+        await adoptionService.remove(req.params.id);
+        res.end();
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+async function createAdoptionRequest(req, res) {
+    let petId = req.body.petId;
+    let pet = await petService.getById(petId)
+    let adoptionRequest = {
+        pet: {
+            _id: petId,
+            name: pet.name
+        },
+        user: {
+            _id: req.session.user._id,
+            name: req.session.user.fullName
+        },
+        owner: {
+            _id: pet.owner._id,
+            name: pet.owner.fullName,
+        },
+        status: "pending",
+        createdAt: Date.now()
+    }
+    try {
+        const adoptionId = await adoptionService.add(adoptionRequest);
+        adoptionRequest._id = adoptionId;
+        res.send(adoptionRequest);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+async function updateAdoptionRequest(req, res) {
     const adoption = req.body;
-    await adoptionService.update(adoption);
-    res.send(adoption);
+    try {
+        await adoptionService.update(adoption);
+        res.send(adoption);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 module.exports = {
-    getAdoptions,
-    getAdoption,
-    removeAdoption,
-    createAdoption,
-    updateAdoption
+    getAdoptionRequests,
+    getAdoptionRequest,
+    removeAdoptionRequest,
+    createAdoptionRequest,
+    updateAdoptionRequest
 }

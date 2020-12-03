@@ -2,26 +2,44 @@ const userService = require('./user.service')
 const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
-    const user = await userService.getById(req.params.id)
-    res.send(user)
+    try {
+        const user = await userService.getById(req.params.id)
+        res.send(user)
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
-  
+
 async function getUsers(req, res) {
-    console.log(req.query);
-    const users = await userService.query(req.query)
-    logger.debug(users);
-    res.send(users)
+    try{
+        const users = await userService.query(req.query)
+        res.send(users)
+    } catch(err){
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function removeUser(req, res) {
-    await userService.remove(req.params.id)
-    res.end()
+    try{
+        await userService.remove(req.params.id)
+        res.end()
+    } catch(err){
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function updateUser(req, res) {
     const user = req.body;
-    await userService.update(user)
-    res.send(user)
+    try{
+        await userService.update(user)
+        res.send(user)
+    } catch(err){
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function createUser(req, res) {
@@ -53,11 +71,35 @@ async function addReview(req, res) {
     }
 }
 
+async function addToFavorite(req, res) {
+    let favoritePetId = req.params.id;
+    //TODO: Do we want to support guess favorites??
+    if (!req.session.user) {
+        review.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
+    } else {
+        review.by.userId = req.session.user._id;
+        review.by.fullName = req.session.user.fullName;
+        review.by.imgUrl = req.session.user.imgUrlProfile;
+    }
+    try {
+        review = await userService.addToFavorite(favoritePetId);
+        // comment.byUser = req.session.user;
+        // TODO - need to find aboutUser?
+        // review.aboutUser = {}
+        res.send(review);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+
 module.exports = {
     getUser,
     getUsers,
     removeUser,
     updateUser,
     createUser,
-    addReview
+    addReview,
+    addToFavorite
 }

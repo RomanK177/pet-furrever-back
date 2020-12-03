@@ -1,4 +1,5 @@
 const dbService = require('../../services/db.service');
+const petService = require('../pet/pet.service');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -41,23 +42,31 @@ async function remove(adoptionId) {
     }
 }
 
-async function update(adoption) {
+async function update(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
-    adoption._id = ObjectId(adoption._id);
+    // adoptionRequest._id = ObjectId(adoptionRequest._id);
     try {
-        await collection.replaceOne({ _id: adoption._id }, adoption);
-        return adoption;
+        if (adoptionRequest.status === 'approved') {
+            petService.approveAdoption(adoptionRequest.pet._id)
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
+                { $set: { status: 'approved' } });
+            return adoptionRequest;
+        } else if (adoptionRequest.status === 'declined') {
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
+                { $set: { status: 'declined' } });
+            return adoptionRequest;
+        }
     } catch (err) {
-        console.log(`ERROR: cannot update adoption ${adoption._id}`)
+        console.log(`ERROR: cannot update adoption ${adoptionRequest._id}`)
         throw err;
     }
 }
 
-async function add(adoption) {
+async function add(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
     try {
-        await collection.insertOne(adoption);
-        return adoption;
+        const result = await collection.insertOne(adoptionRequest);
+        return result.insertedId.toString();
     } catch (err) {
         console.log(`ERROR: cannot insert adoption`)
         throw err;

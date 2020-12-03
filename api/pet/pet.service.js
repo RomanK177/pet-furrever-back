@@ -1,5 +1,6 @@
-const { text } = require('body-parser');
-const { request } = require('http');
+// const { text } = require('body-parser');
+// const { request } = require('http');
+const { request } = require('express');
 const dbService = require('../../services/db.service');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -10,19 +11,60 @@ module.exports = {
     update,
     add,
     addComment,
-    addLike
+    addLike,
+    approveAdoption
 }
 
-// TODO: SORT AND IN STOCK
 async function query(requestQuery) {
-    let mainFilter = []
-    let queryFilter = null
+    const mainFilter = _filterBy(requestQuery);
+    let aggQuery = [
+        {
+            $lookup:
+            {
+                from: 'users',
+                localField: 'ownerId',
+                foreignField: '_id',
+                as: 'owner'
+            },
+        }
+    ]
 
-    if (requestQuery.q) {
-        textFields = []
-        textFields.push({ "name": { $regex: `.*${requestQuery.q}.*` } });
-        textFields.push({ "description": { $regex: `.*${requestQuery.q}.*` } });
-        textFields.push({ "about": { $regex: `.*${requestQuery.q}.*` } });
+    if (mainFilter.length) {
+        aggQuery.push({
+            $match: {
+                $and: mainFilter
+            }
+        });
+    }
+
+    if (requestQuery._sort) {
+        const sortField = requestQuery._sort.toLowerCase()
+        const allowedSortFields = ['name', 'type', 'size'];
+        if (allowedSortFields.includes(sortField)) {
+            aggQuery.push({ $sort: { [sortField]: 1 } });
+        }
+    }
+
+    try {
+        const collection = await dbService.getCollection('pets')
+        let pets = await collection.aggregate(aggQuery).toArray();
+        return pets;
+    } catch (err) {
+        console.log('ERROR: cannot find pets', err)
+        throw err;
+    }
+}
+
+function _filterBy(requestQuery) {
+    let mainFilter = []
+
+    // TODO: Support lowercase
+    // TODO: Support search by all
+    if (requestQuery.txt) {
+        let textFields = []
+        textFields.push({ "name": { $regex: `.*${requestQuery.txt}.*` } });
+        textFields.push({ "description": { $regex: `.*${requestQuery.txt}.*` } });
+        textFields.push({ "about": { $regex: `.*${requestQuery.txt}.*` } });
 
         mainFilter.push({
             $or: textFields
@@ -37,65 +79,15 @@ async function query(requestQuery) {
         mainFilter.push({ "size": { $eq: requestQuery.size } });
     }
 
-    if (requestQuery.favorites) {
-        // for getting user favorites
-        // 1. Get all user favorite pets ids
-        // { "_id": { $in: [favorite pet ids goes here]] } }
-    }
-
-    if (mainFilter.length) {
-        queryFilter = {
-            $and: mainFilter
-        }
-    }
-
-    let aggQuery = [
-        {
-            $lookup:
-            {
-                from: 'users',
-                localField: 'ownerId',
-                foreignField: '_id',
-                as: 'owner'
-            },
-        }
-    ]
-
-    if (queryFilter) {
-        aggQuery.push({ $match: queryFilter });
-    }
-
-    if (requestQuery._sort) {
-        const sortField = requestQuery._sort.toLowerCase()
-        const allowedSortFields = ['name', 'type', 'size'];
-        if (allowedSortFields.includes(sortField)) {
-            aggQuery.push({ $sort: { [sortField]: 1 } });
-        }
-    }
-
-    try {
-        const collection = await dbService.getCollection('pets')
-        let pets = await collection.aggregate(aggQuery).toArray();
-        pets.map((pet) => {
-            if (pet.ownerId) {
-                delete pet.ownerId;
-            }
-
-            if (pet.owner.length && pet.owner[0]) {
-                pet.owner = pet.owner[0];
-                delete pet.owner.password;
-            }
-            else {
-                pet.owner = null
-            }
-            return pet;
-        });
-        return pets
-    } catch (err) {
-        console.log('ERROR: cannot find pets')
-        throw err;
-    }
+    // TODO: Support if Roman want this filter
+    // if (requestQuery.favorites) {
+    //     for getting user favorites
+    //     1. Get all user favorite pets ids
+    //     { "_id": { $in: [favorite pet ids goes here]] } }
+    // }
+    return mainFilter;
 }
+
 
 async function getById(petId) {
     const collection = await dbService.getCollection('pets');
@@ -148,9 +140,9 @@ async function remove(petId) {
 
 async function update(pet) {
     const collection = await dbService.getCollection('pets');
-    pet._id = ObjectId(pet._id);
+    // pet._id = ObjectId(pet._id);
     try {
-        await collection.replaceOne({ _id: pet._id }, pet);
+        await collection.replaceOne({ _id: ObjectId(pet._id) }, pet);
         return pet;
     } catch (err) {
         console.log(`ERROR: cannot update pet ${pet._id}`)
@@ -196,6 +188,19 @@ async function addLike(petId) {
         return pet.numOfTreats;
     } catch (err) {
         console.log(`ERROR: cannot insert like`)
+        throw err;
+    }
+}
+
+async function approveAdoption(petId) {
+    const collection = await dbService.getCollection('pets')
+    try {
+        const result = await collection.updateOne({ _id: ObjectId(petId) },
+            { $set: { adoptedAt: new Date() } });
+        const pet = await getById(petId);
+        return pet;
+    } catch (err) {
+        console.log(`ERROR: cannot insert adoption request`)
         throw err;
     }
 }
