@@ -42,6 +42,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/pets', petRoutes);
 app.use('/api/adoptions', adoptionRoutes);
+
 connectSockets(io)
 
 app.get('/**', (req, res) => {
