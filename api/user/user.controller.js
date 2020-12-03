@@ -74,7 +74,7 @@ async function updateFavorites(req, res) {
     let favoritePetId = req.params.id;
     try {
         const user = await userService.updateFavorites(userId, favoritePetId, isFavorite);
-        res.json({user});
+        res.send(user);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
