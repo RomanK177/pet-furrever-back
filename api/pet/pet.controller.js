@@ -4,32 +4,56 @@ const logger = require('../../services/logger.service');
 // PET CRUD //
 
 async function getPets(req, res) {
-    // `pets?_sort=${sortStr}${filterStr}`
-    const pets = await petService.query(req.query);
-    res.send(pets);
+    try {
+        const pets = await petService.query(req.query);
+        res.send(pets);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function getPet(req, res) {
-    const pet = await petService.getById(req.params.id);
-    res.send(pet);
+    try {
+        const pet = await petService.getById(req.params.id);
+        res.send(pet);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function removePet(req, res) {
-    await petService.remove(req.params.id);
-    res.end();
+    try {
+        await petService.remove(req.params.id);
+        res.end();
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function createPet(req, res) {
     let pet = req.body;
     pet.ownerId = req.session.user._id
-    await petService.add(pet);
-    res.send(pet);
+    try {
+        await petService.add(pet);
+        res.send(pet);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function updatePet(req, res) {
     const pet = req.body;
-    await petService.update(pet);
-    res.send(pet);
+    try {
+        await petService.update(pet);
+        res.send(pet);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
 }
 
 async function addComment(req, res) {
@@ -45,8 +69,8 @@ async function addComment(req, res) {
         comment.by.imgUrl = req.session.user.imgUrlProfile;
     }
     try {
-        comment = await petService.addComment(petId, comment);
-        res.json(comment);
+        const pet = await petService.addComment(petId, comment);
+        res.json(pet);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
@@ -58,7 +82,7 @@ async function addTreat(req, res) {
     console.log(petId)
     try {
         const treats = await petService.addLike(petId);
-        res.json({treats});
+        res.json({ treats });
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;

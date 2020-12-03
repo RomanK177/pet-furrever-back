@@ -8,6 +8,15 @@ async function requireAuth(req, res, next) {
   next();
 }
 
+async function requireOwner(req, res, next) {
+  const user = req.session.user;
+  if (user.userType !== 'owner') {
+    res.status(403).end('Only owner is authorized!');
+    return;
+  }
+  next();
+}
+
 // async function requireAdmin(req, res, next) {
 //   const user = req.session.user;
 //   if (!user.isAdmin) {
@@ -22,5 +31,6 @@ async function requireAuth(req, res, next) {
 
 module.exports = {
   requireAuth,
-  // requireAdmin
+  // requireAdmin,
+  requireOwner
 }
