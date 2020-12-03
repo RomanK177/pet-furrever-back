@@ -71,11 +71,35 @@ async function addReview(req, res) {
     }
 }
 
+async function addToFavorite(req, res) {
+    let favoritePetId = req.params.id;
+    //TODO: Do we want to support guess favorites??
+    if (!req.session.user) {
+        review.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
+    } else {
+        review.by.userId = req.session.user._id;
+        review.by.fullName = req.session.user.fullName;
+        review.by.imgUrl = req.session.user.imgUrlProfile;
+    }
+    try {
+        review = await userService.addToFavorite(favoritePetId);
+        // comment.byUser = req.session.user;
+        // TODO - need to find aboutUser?
+        // review.aboutUser = {}
+        res.send(review);
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+
 module.exports = {
     getUser,
     getUsers,
     removeUser,
     updateUser,
     createUser,
-    addReview
+    addReview,
+    addToFavorite
 }
