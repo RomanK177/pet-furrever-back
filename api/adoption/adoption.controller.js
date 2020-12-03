@@ -34,7 +34,6 @@ async function removeAdoptionRequest(req, res) {
 }
 
 async function createAdoptionRequest(req, res) {
-    debugger
     let petId = req.body.petId;
     let pet = await petService.getById(petId)
     let adoptionRequest = {
@@ -44,13 +43,14 @@ async function createAdoptionRequest(req, res) {
         },
         user: {
             _id: req.session.user._id,
-            name: req.session.user.name
+            name: req.session.user.fullName
         },
         owner: {
-            _id: pet.owner.id,
+            _id: pet.owner._id,
             name: pet.owner.fullName,
         },
-        status: "pending"
+        status: "pending",
+        createdAt: Date.now()
     }
     try {
         const adoptionId = await adoptionService.add(adoptionRequest);

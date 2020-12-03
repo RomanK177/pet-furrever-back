@@ -44,15 +44,15 @@ async function remove(adoptionId) {
 
 async function update(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
-    adoptionRequest._id = ObjectId(adoptionRequest._id);
+    // adoptionRequest._id = ObjectId(adoptionRequest._id);
     try {
         if (adoptionRequest.status === 'approved') {
             petService.approveAdoption(adoptionRequest.pet._id)
-            const result = await collection.updateOne({ _id: ObjectId(adoptionRequest.pet._id) },
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
                 { $set: { status: 'approved' } });
             return adoptionRequest;
-        } else {
-            const result = await collection.updateOne({ _id: ObjectId(adoptionRequest.pet._id) },
+        } else if (adoptionRequest.status === 'declined') {
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
                 { $set: { status: 'declined' } });
             return adoptionRequest;
         }
@@ -63,7 +63,6 @@ async function update(adoptionRequest) {
 }
 
 async function add(adoptionRequest) {
-    debugger
     const collection = await dbService.getCollection('adoptions');
     try {
         const result = await collection.insertOne(adoptionRequest);

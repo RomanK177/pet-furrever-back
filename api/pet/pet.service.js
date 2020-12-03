@@ -16,7 +16,7 @@ module.exports = {
 }
 
 async function query(requestQuery) {
-const mainFilter = _filterBy(requestQuery);
+    const mainFilter = _filterBy(requestQuery);
     let aggQuery = [
         {
             $lookup:
@@ -55,7 +55,7 @@ const mainFilter = _filterBy(requestQuery);
     }
 }
 
-function _filterBy(requestQuery){
+function _filterBy(requestQuery) {
     let mainFilter = []
 
     // TODO: Support lowercase
@@ -140,9 +140,9 @@ async function remove(petId) {
 
 async function update(pet) {
     const collection = await dbService.getCollection('pets');
-    pet._id = ObjectId(pet._id);
+    // pet._id = ObjectId(pet._id);
     try {
-        await collection.replaceOne({ _id: pet._id }, pet);
+        await collection.replaceOne({ _id: ObjectId(pet._id) }, pet);
         return pet;
     } catch (err) {
         console.log(`ERROR: cannot update pet ${pet._id}`)
@@ -193,8 +193,14 @@ async function addLike(petId) {
 }
 
 async function approveAdoption(petId) {
-    const result = await collection.updateOne({ _id: ObjectId(petId) },
-        { $set: { adoptedAt: Date.now() } });
-    const pet = await getById(petId);
-    return pet;
+    const collection = await dbService.getCollection('pets')
+    try {
+        const result = await collection.updateOne({ _id: ObjectId(petId) },
+            { $set: { adoptedAt: new Date() } });
+        const pet = await getById(petId);
+        return pet;
+    } catch (err) {
+        console.log(`ERROR: cannot insert adoption request`)
+        throw err;
+    }
 }
