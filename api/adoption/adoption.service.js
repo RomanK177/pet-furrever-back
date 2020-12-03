@@ -44,7 +44,9 @@ async function remove(adoptionId) {
 
 async function update(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
-    // adoptionRequest._id = ObjectId(adoptionRequest._id);
+    adoptionRequest.pet._id = ObjectId(adoptionRequest.pet._id);
+    adoptionRequest.user._id = ObjectId(adoptionRequest.user._id);
+    
     try {
         if (adoptionRequest.status === 'approved') {
             petService.approveAdoption(adoptionRequest.pet._id)
