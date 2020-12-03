@@ -55,7 +55,11 @@ async function update(adoptionRequest) {
             await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
                 { $set: { status: 'declined' } });
             return adoptionRequest;
-        }
+        } else if (adoptionRequest.status === 'cancelled') {
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
+                { $set: { status: 'cancelled' } });
+            return adoptionRequest;
+        } 
     } catch (err) {
         console.log(`ERROR: cannot update adoption ${adoptionRequest._id}`)
         throw err;
