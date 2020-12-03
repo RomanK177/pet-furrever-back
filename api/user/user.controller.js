@@ -49,8 +49,8 @@ async function createUser(req, res) {
 }
 
 async function addReview(req, res) {
-    let review = req.body;
     let ownerId = req.params.id;
+    let review = req.body;
     review.by = {};
     if (!req.session.user) {
         review.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
@@ -60,11 +60,8 @@ async function addReview(req, res) {
         review.by.imgUrl = req.session.user.imgUrlProfile;
     }
     try {
-        review = await userService.addReview(ownerId, review);
-        // comment.byUser = req.session.user;
-        // TODO - need to find aboutUser?
-        // review.aboutUser = {}
-        res.send(review);
+        const owner = await userService.addReview(ownerId, review);
+        res.send(owner);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
@@ -72,21 +69,11 @@ async function addReview(req, res) {
 }
 
 async function addToFavorite(req, res) {
+    let userId = req.session.user._id
     let favoritePetId = req.params.id;
-    //TODO: Do we want to support guess favorites??
-    if (!req.session.user) {
-        review.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
-    } else {
-        review.by.userId = req.session.user._id;
-        review.by.fullName = req.session.user.fullName;
-        review.by.imgUrl = req.session.user.imgUrlProfile;
-    }
     try {
-        review = await userService.addToFavorite(favoritePetId);
-        // comment.byUser = req.session.user;
-        // TODO - need to find aboutUser?
-        // review.aboutUser = {}
-        res.send(review);
+        const user = await userService.addToFavorite(userId, favoritePetId);
+        res.send(user);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;

@@ -8,7 +8,8 @@ module.exports = {
     remove,
     update,
     add,
-    addReview
+    addReview,
+    addToFavorite
 }
 
 async function query(filterBy = {}) {
@@ -98,6 +99,20 @@ async function addReview(ownerId, review) {
             { $push: { "ownerData.reviews": review } });
         const owner = await getById(ownerId)
         return owner;
+    } catch (err) {
+        console.log(`ERROR: ${err}`)
+        throw err;
+    }
+}
+
+async function addToFavorite(userId, petId) {
+    const collection = await dbService.getCollection('users')
+    petId = ObjectId(petId);
+    try {
+        const result = await collection.updateOne({ _id: ObjectId(userId) },
+            { $push: { favoritePets: petId } });
+        const user = await getById(userId)
+        return user;
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
