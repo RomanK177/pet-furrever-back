@@ -9,7 +9,7 @@ module.exports = {
     update,
     add,
     addReview,
-    addToFavorite
+    updateFavorites
 }
 
 async function query(filterBy = {}) {
@@ -70,7 +70,6 @@ async function remove(userId) {
 async function update(user) {
     const collection = await dbService.getCollection('users')
     user._id = ObjectId(user._id);
-
     try {
         await collection.replaceOne({ _id: user._id }, { user })
         return user
@@ -105,19 +104,25 @@ async function addReview(ownerId, review) {
     }
 }
 
-async function addToFavorite(userId, petId) {
-    const collection = await dbService.getCollection('users')
+async function updateFavorites(userId, petId, isFavorite) {
+    const collection = await dbService.getCollection('users');
     petId = ObjectId(petId);
     try {
-        const result = await collection.updateOne({ _id: ObjectId(userId) },
-            { $push: { favoritePets: petId } });
-        const user = await getById(userId)
+        if (isFavorite) {
+            const result = await collection.updateOne({ _id: ObjectId(userId) },
+                { $push: { favoritePets: petId } });
+        } else {
+            const result = await collection.update({ _id: ObjectId(userId) },
+                { $pull: { favoritePets: petId } });
+        }
+        const user = await getById(userId);
         return user;
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
 }
+
 
 function _buildCriteria(filterBy) {
     const criteria = {};

@@ -12,20 +12,20 @@ async function getUser(req, res) {
 }
 
 async function getUsers(req, res) {
-    try{
+    try {
         const users = await userService.query(req.query)
         res.send(users)
-    } catch(err){
+    } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
 }
 
 async function removeUser(req, res) {
-    try{
+    try {
         await userService.remove(req.params.id)
         res.end()
-    } catch(err){
+    } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
@@ -33,10 +33,10 @@ async function removeUser(req, res) {
 
 async function updateUser(req, res) {
     const user = req.body;
-    try{
+    try {
         await userService.update(user)
         res.send(user)
-    } catch(err){
+    } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
@@ -68,18 +68,18 @@ async function addReview(req, res) {
     }
 }
 
-async function addToFavorite(req, res) {
-    let userId = req.session.user._id
+async function updateFavorites(req, res) {
+    let isFavorite = req.body.isFavorite;
+    let userId = req.session.user._id;
     let favoritePetId = req.params.id;
     try {
-        const user = await userService.addToFavorite(userId, favoritePetId);
-        res.send(user);
+        const user = await userService.updateFavorites(userId, favoritePetId, isFavorite);
+        res.json({user});
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
 }
-
 
 module.exports = {
     getUser,
@@ -88,5 +88,5 @@ module.exports = {
     updateUser,
     createUser,
     addReview,
-    addToFavorite
+    updateFavorites
 }
