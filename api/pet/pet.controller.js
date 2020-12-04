@@ -80,9 +80,8 @@ async function addComment(req, res) {
 
 async function addTreat(req, res) {
     let petId = req.params.id;
-    console.log(petId)
     try {
-        const treats = await petService.addLike(petId);
+        const treats = await petService.addTreat(petId);
         res.json({ treats });
     } catch (err) {
         console.log(`ERROR: ${err}`)

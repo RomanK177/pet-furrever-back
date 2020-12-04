@@ -11,7 +11,7 @@ module.exports = {
     update,
     add,
     addComment,
-    addLike,
+    addTreat,
     approveAdoption
 }
 
@@ -48,6 +48,11 @@ async function query(requestQuery) {
     try {
         const collection = await dbService.getCollection('pets')
         let pets = await collection.aggregate(aggQuery).toArray();
+        pets.map((pet) => {
+            if (pet.owner && pet.owner.length) {
+                pet.owner = pet.owner[0];
+            }
+        })
         return pets;
     } catch (err) {
         console.log('ERROR: cannot find pets', err)
@@ -178,7 +183,7 @@ async function addComment(petId, comment) {
     }
 }
 
-async function addLike(petId) {
+async function addTreat(petId) {
     const collection = await dbService.getCollection('pets')
     try {
         const result = await collection.updateOne({ _id: ObjectId(petId) },
