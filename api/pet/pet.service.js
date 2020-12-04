@@ -12,7 +12,8 @@ module.exports = {
     add,
     addComment,
     addLike,
-    approveAdoption
+    approveAdoption,
+    declineAdoption
 }
 
 async function query(requestQuery) {
@@ -197,6 +198,19 @@ async function approveAdoption(petId) {
     try {
         const result = await collection.updateOne({ _id: ObjectId(petId) },
             { $set: { adoptedAt: new Date() } });
+        const pet = await getById(petId);
+        return pet;
+    } catch (err) {
+        console.log(`ERROR: cannot insert adoption request`)
+        throw err;
+    }
+}
+
+async function declineAdoption(petId) {
+    const collection = await dbService.getCollection('pets')
+    try {
+        const result = await collection.updateOne({ _id: ObjectId(petId) },
+            { $set: { adoptedAt: null} });
         const pet = await getById(petId);
         return pet;
     } catch (err) {
