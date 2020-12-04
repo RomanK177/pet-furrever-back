@@ -48,6 +48,11 @@ async function query(requestQuery) {
     try {
         const collection = await dbService.getCollection('pets')
         let pets = await collection.aggregate(aggQuery).toArray();
+        pets.map((pet) => {
+            if (pet.owner && pet.owner.length) {
+                pet.owner = pet.owner[0];
+            }
+        })
         return pets;
     } catch (err) {
         console.log('ERROR: cannot find pets', err)
