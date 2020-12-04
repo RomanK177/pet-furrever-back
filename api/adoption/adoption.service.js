@@ -6,8 +6,9 @@ module.exports = {
     query,
     getById,
     remove,
-    update,
-    add
+    add,
+    updateRequest,
+    sendMessage
 }
 
 async function query() {
@@ -42,11 +43,22 @@ async function remove(adoptionId) {
     }
 }
 
-async function update(adoptionRequest) {
+async function add(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
     adoptionRequest.pet._id = ObjectId(adoptionRequest.pet._id);
     adoptionRequest.user._id = ObjectId(adoptionRequest.user._id);
-    
+    try {
+        const result = await collection.insertOne(adoptionRequest);
+        return result.insertedId.toString();
+    } catch (err) {
+        console.log(`ERROR: cannot insert adoption`)
+        throw err;
+    }
+}
+
+async function updateRequest(adoptionRequest) {
+    const collection = await dbService.getCollection('adoptions');
+
     try {
         if (adoptionRequest.status === 'approved') {
             petService.approveAdoption(adoptionRequest.pet._id)
@@ -61,20 +73,22 @@ async function update(adoptionRequest) {
             await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
                 { $set: { status: 'cancelled' } });
             return adoptionRequest;
-        } 
+        }
     } catch (err) {
         console.log(`ERROR: cannot update adoption ${adoptionRequest._id}`)
         throw err;
     }
 }
 
-async function add(adoptionRequest) {
+async function sendMessage(message, adoptionRequestId) {
     const collection = await dbService.getCollection('adoptions');
     try {
-        const result = await collection.insertOne(adoptionRequest);
-        return result.insertedId.toString();
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) },
+            { $push: { messages: message } });
+            const adoptionRequest = await getById(adoptionRequestId)
+            return adoptionRequest.messages;
     } catch (err) {
-        console.log(`ERROR: cannot insert adoption`)
+        console.log(`ERROR: cannot send message ${message}`)
         throw err;
     }
 }
