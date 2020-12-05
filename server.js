@@ -7,7 +7,11 @@ const session = require('express-session')
 
 const app = express()
 
-const http = require('http').createServer(app);
+const http = require('http').createServer(app, {
+    cors: {
+      origin: '*',
+    }
+});
 const io = require('socket.io')(http);
 
 // Express App Config
