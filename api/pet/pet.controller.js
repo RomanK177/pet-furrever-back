@@ -50,7 +50,8 @@ async function updatePet(req, res) {
     const pet = req.body;
     try {
         await petService.update(pet);
-        res.send(pet);
+        const realPet = await petService.getById(pet._id)
+        res.send(realPet);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
