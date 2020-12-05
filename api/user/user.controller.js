@@ -60,8 +60,8 @@ async function addReview(req, res) {
         review.by.imgUrl = req.session.user.imgUrlProfile;
     }
     try {
-        const owner = await userService.addReview(ownerId, review);
-        res.send(owner);
+        const reviews = await userService.addReview(ownerId, review);
+        res.send(reviews);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
