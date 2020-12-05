@@ -9,9 +9,9 @@ const router = express.Router();
 router.get('/', getPets);
 router.get('/:id', getPet);
 router.delete('/:id', requireAuth, requireOwner, removePet);
-router.put('/:id', requireAuth, requireOwner, updatePet);
+router.put('/:id', updatePet);
 router.post('/', requireAuth, requireOwner, createPet);
-router.post('/:id/comments', addComment);
-router.post('/:id/treats', addTreat);
+// router.post('/:id/comments', addComment);
+// router.post('/:id/treats', addTreat);
 
 module.exports = router;
