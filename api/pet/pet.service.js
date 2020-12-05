@@ -115,9 +115,6 @@ async function getById(petId) {
         if (pet.length) {
             pet = pet[0]
         }
-        if (pet.ownerId) {
-            delete pet.ownerId;
-        }
 
         if (pet.owner.length && pet.owner[0]) {
             pet.owner = pet.owner[0];
@@ -147,6 +144,10 @@ async function update(pet) {
     const collection = await dbService.getCollection('pets');
     const id= pet._id;
     delete pet._id
+    delete pet.owner;
+
+    pet.ownerId = ObjectId(pet.ownerId);
+
     try {
         await collection.replaceOne({ '_id': ObjectId(id)}, pet);
         pet._id = id
@@ -156,6 +157,7 @@ async function update(pet) {
         throw err;
     }
 }
+
 
 async function add(pet) {
     const collection = await dbService.getCollection('pets');
