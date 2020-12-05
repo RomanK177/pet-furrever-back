@@ -97,7 +97,7 @@ async function addReview(ownerId, review) {
         const result = await collection.updateOne({ _id: ObjectId(ownerId) },
             { $push: { "ownerData.reviews": review } });
         const owner = await getById(ownerId)
-        return owner;
+        return owner.reviews;
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
@@ -116,7 +116,7 @@ async function updateFavorites(userId, petId, isFavorite) {
                 { $pull: { favoritePets: petId } });
         }
         const user = await getById(userId);
-        return user;
+        return user.favoritePets;
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
