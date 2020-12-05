@@ -2,6 +2,7 @@ const adoptionService = require('./adoption.service');
 const logger = require('../../services/logger.service');
 const petService = require('../pet/pet.service');
 const { request } = require('express');
+const { getById } = require('../pet/pet.service');
 
 
 async function getAdoptionRequests(req, res) {
@@ -42,13 +43,15 @@ async function createAdoptionRequest(req, res) {
             _id: petId,
             name: pet.name
         },
-        user: {
+        adopter: {
             _id: req.session.user._id,
-            name: req.session.user.fullName
+            name: req.session.user.fullName,
+            isRead: ''
         },
         owner: {
             _id: pet.owner._id,
             name: pet.owner.fullName,
+            isRead: ''
         },
         status: "pending",
         createdAt: Date.now()
@@ -76,9 +79,10 @@ async function updateAdoptionRequest(req, res) {
 
 async function sendMessage(req, res){
     const requestId = req.params.id;
-    const message = {txt: req.body.message, from: req.session.user.fullName};
+    const userId = req.session.userId
+    const message = {txt: req.body.message, from: req.session.user.fullName, date: new Date()};
     try {
-       const adoptionRequest = await adoptionService.sendMessage(message, requestId);
+       const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
         res.send(adoptionRequest);
     } catch (err) {
         console.log(`ERROR: ${err}`)

@@ -141,9 +141,11 @@ async function remove(petId) {
 
 async function update(pet) {
     const collection = await dbService.getCollection('pets');
-    // pet._id = ObjectId(pet._id);
+    const id= pet._id;
+    delete pet._id
     try {
-        await collection.replaceOne({ _id: ObjectId(pet._id) }, pet);
+        await collection.replaceOne({ '_id': ObjectId(id)}, pet);
+        pet._id = id
         return pet;
     } catch (err) {
         console.log(`ERROR: cannot update pet ${pet._id}`)

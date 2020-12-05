@@ -10,7 +10,7 @@ router.get('/', getUsers);
 router.get('/:id', getUser);
 router.put('/:id', requireAuth, updateUser);
 router.delete('/:id', requireAuth, removeUser);
-router.post('/:id/reviews', addReview);
-router.post('/:id/favorites', requireAuth, updateFavorites );
+// router.post('/:id/reviews', addReview);
+// router.post('/:id/favorites', requireAuth, updateFavorites );
 
 module.exports = router;
