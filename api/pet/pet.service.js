@@ -17,17 +17,14 @@ module.exports = {
 
 async function query(requestQuery) {
     const mainFilter = _filterBy(requestQuery);
-    let aggQuery = [
-        {
-            $lookup:
-            {
-                from: 'users',
-                localField: 'ownerId',
-                foreignField: '_id',
-                as: 'owner'
-            },
-        }
-    ]
+    let aggQuery = [{
+        $lookup: {
+            from: 'users',
+            localField: 'ownerId',
+            foreignField: '_id',
+            as: 'owner'
+        },
+    }]
 
     if (mainFilter.length) {
         aggQuery.push({
@@ -41,7 +38,8 @@ async function query(requestQuery) {
         const sortField = requestQuery._sort.toLowerCase()
         const allowedSortFields = ['name', 'type', 'size'];
         if (allowedSortFields.includes(sortField)) {
-            aggQuery.push({ $sort: { [sortField]: 1 } });
+            aggQuery.push({ $sort: {
+                    [sortField]: 1 } });
         }
     }
 
@@ -61,6 +59,7 @@ async function query(requestQuery) {
 }
 
 function _filterBy(requestQuery) {
+    console.log("🚀 ~ file: pet.service.js ~ line 64 ~ _filterBy ~ requestQuery", requestQuery)
     let mainFilter = []
 
     // TODO: Support lowercase
@@ -97,13 +96,11 @@ function _filterBy(requestQuery) {
 async function getById(petId) {
     const collection = await dbService.getCollection('pets');
     try {
-        let aggQuery = [
-            {
+        let aggQuery = [{
                 $match: { "_id": ObjectId(petId) }
             },
             {
-                $lookup:
-                {
+                $lookup: {
                     from: 'users',
                     localField: 'ownerId',
                     foreignField: '_id',
@@ -122,8 +119,7 @@ async function getById(petId) {
         if (pet.owner.length && pet.owner[0]) {
             pet.owner = pet.owner[0];
             delete pet.owner.password;
-        }
-        else {
+        } else {
             pet.owner = null
         }
         return pet;
@@ -173,8 +169,7 @@ async function addComment(petId, comment) {
     // comment.aboutUserId = ObjectId(comment.aboutUserId);
     console.log(comment)
     try {
-        const result = await collection.updateOne({ _id: ObjectId(petId) },
-            { $push: { comments: comment } });
+        const result = await collection.updateOne({ _id: ObjectId(petId) }, { $push: { comments: comment } });
         const pet = await getById(petId);
         return pet;
     } catch (err) {
@@ -186,8 +181,7 @@ async function addComment(petId, comment) {
 async function addTreat(petId) {
     const collection = await dbService.getCollection('pets')
     try {
-        const result = await collection.updateOne({ _id: ObjectId(petId) },
-            { $inc: { 'numOfTreats': 1 } });
+        const result = await collection.updateOne({ _id: ObjectId(petId) }, { $inc: { 'numOfTreats': 1 } });
 
         const pet = await getById(petId)
         return pet.numOfTreats;
@@ -200,8 +194,7 @@ async function addTreat(petId) {
 async function approveAdoption(petId) {
     const collection = await dbService.getCollection('pets')
     try {
-        const result = await collection.updateOne({ _id: ObjectId(petId) },
-            { $set: { adoptedAt: new Date() } });
+        const result = await collection.updateOne({ _id: ObjectId(petId) }, { $set: { adoptedAt: new Date() } });
         const pet = await getById(petId);
         return pet;
     } catch (err) {
@@ -213,8 +206,7 @@ async function approveAdoption(petId) {
 async function declineAdoption(petId) {
     const collection = await dbService.getCollection('pets')
     try {
-        const result = await collection.updateOne({ _id: ObjectId(petId) },
-            { $set: { adoptedAt: null} });
+        const result = await collection.updateOne({ _id: ObjectId(petId) }, { $set: { adoptedAt: null } });
         const pet = await getById(petId);
         return pet;
     } catch (err) {
