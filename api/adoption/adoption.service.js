@@ -9,7 +9,7 @@ module.exports = {
     add,
     updateRequest,
     sendMessage,
-    markMessageAsUnread
+    // markMessageAsUnread
 }
 
 async function query() {

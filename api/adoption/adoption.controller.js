@@ -36,6 +36,7 @@ async function removeAdoptionRequest(req, res) {
 }
 
 async function createAdoptionRequest(req, res) {
+
     let petId = req.body.petId;
 
     let pet = await petService.getById(petId)
@@ -80,10 +81,7 @@ async function updateAdoptionRequest(req, res) {
 
 async function sendMessage(req, res) {
     const requestId = req.params.id;
-    // console.log('reqiestid', requestId)
-    // console.log('req session userid', req.session)
-    const userId = req.session.user._id
-    // console.log('userid', userId)
+    const userId = req.session.userId
     const message = {
         txt: req.body.message,
         from: req.session.user.fullName,
