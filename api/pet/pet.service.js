@@ -38,8 +38,11 @@ async function query(requestQuery) {
         const sortField = requestQuery._sort.toLowerCase()
         const allowedSortFields = ['name', 'type', 'size'];
         if (allowedSortFields.includes(sortField)) {
-            aggQuery.push({ $sort: {
-                    [sortField]: 1 } });
+            aggQuery.push({
+                $sort: {
+                    [sortField]: 1
+                }
+            });
         }
     }
 
@@ -126,6 +129,7 @@ async function getById(petId) {
     }
 }
 
+
 async function remove(petId) {
     const collection = await dbService.getCollection('pets');
     try {
@@ -138,14 +142,14 @@ async function remove(petId) {
 
 async function update(pet) {
     const collection = await dbService.getCollection('pets');
-    const id= pet._id;
+    const id = pet._id;
     delete pet._id
     delete pet.owner;
 
     pet.ownerId = ObjectId(pet.ownerId);
 
     try {
-        await collection.replaceOne({ '_id': ObjectId(id)}, pet);
+        await collection.replaceOne({ '_id': ObjectId(id) }, pet);
         pet._id = id
         return pet;
     } catch (err) {

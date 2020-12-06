@@ -44,9 +44,10 @@ async function remove(adoptionId) {
 }
 
 async function add(adoptionRequest) {
+    console.log("🚀 ~ file: adoption.service.js ~ line 58 ~ add ~ adoptionRequest", adoptionRequest)
     const collection = await dbService.getCollection('adoptions');
     adoptionRequest.pet._id = ObjectId(adoptionRequest.pet._id);
-    adoptionRequest.user._id = ObjectId(adoptionRequest.user._id);
+    adoptionRequest.adopter._id = ObjectId(adoptionRequest.adopter._id);
     try {
         const result = await collection.insertOne(adoptionRequest);
         return result.insertedId.toString();
@@ -62,16 +63,13 @@ async function updateRequest(adoptionRequest) {
     try {
         if (adoptionRequest.status === 'approved') {
             petService.approveAdoption(adoptionRequest.pet._id)
-            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
-                { $set: { status: 'approved' } });
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) }, { $set: { status: 'approved' } });
             return adoptionRequest;
         } else if (adoptionRequest.status === 'declined') {
-            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
-                { $set: { status: 'declined' } });
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) }, { $set: { status: 'declined' } });
             return adoptionRequest;
         } else if (adoptionRequest.status === 'cancelled') {
-            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) },
-                { $set: { status: 'cancelled' } });
+            await collection.updateOne({ _id: ObjectId(adoptionRequest._id) }, { $set: { status: 'cancelled' } });
             return adoptionRequest;
         }
     } catch (err) {
@@ -83,15 +81,12 @@ async function updateRequest(adoptionRequest) {
 async function sendMessage(message, adoptionRequestId, userId) {
     const collection = await dbService.getCollection('adoptions');
     try {
-        await collection.updateOne({ _id: ObjectId(adoptionRequestId) },
-            { $push: { messages: message } });
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message } });
         const adoptionRequest = await getById(adoptionRequestId)
         if (userId === adoptionRequest.adopter._id) {
-            await collection.updateOne({ _id: ObjectId(adoptionRequestId) },
-                { $set: { 'messages.owner': false } });
+            await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $set: { 'messages.owner': false } });
         } else if (userId === adoptionRequest.owner._id) {
-            await collection.updateOne({ _id: ObjectId(adoptionRequestId) },
-                { $set: { 'messages.adopter': false } });
+            await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $set: { 'messages.adopter': false } });
         }
         return adoptionRequest.messages;
     } catch (err) {

@@ -59,6 +59,7 @@ async function updatePet(req, res) {
 }
 
 async function addComment(req, res) {
+
     let comment = req.body;
     let petId = req.params.id;
     comment.by = {};
