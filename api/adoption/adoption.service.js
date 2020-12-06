@@ -8,7 +8,8 @@ module.exports = {
     remove,
     add,
     updateRequest,
-    sendMessage
+    sendMessage,
+    markMessageAsUnread
 }
 
 async function query() {
@@ -94,3 +95,15 @@ async function sendMessage(message, adoptionRequestId, userId) {
         throw err;
     }
 }
+
+// async function markMessageAsUnread(message, adoptionRequestId){
+//     const collection = await dbService.getCollection('adoptions');
+//     try {
+//         await collection.update({ _id: ObjectId(adoptionRequestId) }, { $set: { isReadReceiver: true } });
+//         const adoptionRequest = await getById(adoptionRequestId)
+//         return adoptionRequest.messages;
+//     } catch (err) {
+//         console.log(`ERROR: cannot send message ${message}`)
+//         throw err;
+//     }
+// }

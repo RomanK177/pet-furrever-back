@@ -91,12 +91,23 @@ async function sendMessage(req, res) {
     };
     try {
         const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
-        res.send(adoptionRequest);
+        res.send(adoptionRequest.messages);
     } catch (err) {
         console.log(`ERROR: ${err}`)
         throw err;
     }
 }
+
+// async function markMessageAsUnread(message) {
+//     const adoptionRequestId = req.params.id;
+//     try {
+//         const adoptionRequest = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
+//         res.send(adoptionRequest.messages);
+//     } catch (err) {
+//         console.log(`ERROR: ${err}`)
+//         throw err;
+//     }
+// }
 
 module.exports = {
     getAdoptionRequests,
@@ -104,5 +115,6 @@ module.exports = {
     removeAdoptionRequest,
     createAdoptionRequest,
     updateAdoptionRequest,
-    sendMessage
+    sendMessage,
+    markMessageAsUnread
 }
