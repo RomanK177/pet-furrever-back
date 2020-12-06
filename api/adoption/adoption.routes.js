@@ -11,9 +11,7 @@ router.post('/', requireAuth, createAdoptionRequest);
 router.get('/:id', getAdoptionRequest);
 router.delete('/:id', requireAuth, requireOwner, removeAdoptionRequest);
 // TODO: Check if need to add requireOwner - can user update the adoption when he delet it?
-router.put('/:id', updateAdoptionRequest);
-// router.put('/:id',requireAuth, updateAdoptionRequest);
+router.put('/:id', requireAuth, updateAdoptionRequest);
 router.post('/:id/messages', sendMessage)
-    // router.post('/:id/messages', requireAuth, sendMessage)
 
 module.exports = router;
