@@ -36,9 +36,11 @@ async function removeAdoptionRequest(req, res) {
 }
 
 async function createAdoptionRequest(req, res) {
-    console.log('made it to create adoption')
     let petId = req.body.petId;
+
     let pet = await petService.getById(petId)
+    console.log("🚀 ~ file: adoption.controller.js ~ line 43 ~ createAdoptionRequest ~ pet", pet)
+
     let adoptionRequest = {
         pet: {
             _id: petId,
@@ -47,12 +49,10 @@ async function createAdoptionRequest(req, res) {
         adopter: {
             _id: req.session.user._id,
             name: req.session.user.fullName,
-            isRead: ''
         },
         owner: {
             _id: pet.owner._id,
             name: pet.owner.fullName,
-            isRead: ''
         },
         status: "pending",
         createdAt: Date.now()
@@ -78,12 +78,18 @@ async function updateAdoptionRequest(req, res) {
     }
 }
 
-async function sendMessage(req, res){
+async function sendMessage(req, res) {
     const requestId = req.params.id;
     const userId = req.session.userId
-    const message = {txt: req.body.message, from: req.session.user.fullName, date: new Date()};
+    const message = {
+        txt: req.body.message,
+        from: req.session.user.fullName,
+        date: new Date(),
+        isReadSender: true,
+        isReadReceiver: false
+    };
     try {
-       const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
+        const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
         res.send(adoptionRequest);
     } catch (err) {
         console.log(`ERROR: ${err}`)

@@ -35,6 +35,7 @@ async function removePet(req, res) {
 
 async function createPet(req, res) {
     let pet = req.body;
+    console.log('Creating pet', pet, req.session)
     pet.ownerId = req.session.user._id
     try {
         await petService.add(pet);
@@ -58,6 +59,7 @@ async function updatePet(req, res) {
 }
 
 async function addComment(req, res) {
+
     let comment = req.body;
     let petId = req.params.id;
     comment.by = {};
