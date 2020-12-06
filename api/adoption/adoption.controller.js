@@ -36,6 +36,7 @@ async function removeAdoptionRequest(req, res) {
 }
 
 async function createAdoptionRequest(req, res) {
+    console.log('made it to create adoption')
     let petId = req.body.petId;
     let pet = await petService.getById(petId)
     let adoptionRequest = {

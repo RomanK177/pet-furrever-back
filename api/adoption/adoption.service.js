@@ -46,7 +46,7 @@ async function remove(adoptionId) {
 async function add(adoptionRequest) {
     const collection = await dbService.getCollection('adoptions');
     adoptionRequest.pet._id = ObjectId(adoptionRequest.pet._id);
-    adoptionRequest.user._id = ObjectId(adoptionRequest.user._id);
+    adoptionRequest.adopter._id = ObjectId(adoptionRequest.user._id);
     try {
         const result = await collection.insertOne(adoptionRequest);
         return result.insertedId.toString();
