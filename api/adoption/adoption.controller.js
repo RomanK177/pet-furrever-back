@@ -3,8 +3,6 @@ const logger = require('../../services/logger.service');
 const petService = require('../pet/pet.service');
 const { request } = require('express');
 const { getById } = require('../pet/pet.service');
-
-
 async function getAdoptionRequests(req, res) {
     try {
         const adoption = await adoptionService.query(req.query);
@@ -14,7 +12,6 @@ async function getAdoptionRequests(req, res) {
         throw err;
     }
 }
-
 async function getAdoptionRequest(req, res) {
     try {
         const adoption = await adoptionService.getById(req.params.id);
@@ -24,7 +21,6 @@ async function getAdoptionRequest(req, res) {
         throw err;
     }
 }
-
 async function removeAdoptionRequest(req, res) {
     try {
         await adoptionService.remove(req.params.id);
@@ -34,13 +30,10 @@ async function removeAdoptionRequest(req, res) {
         throw err;
     }
 }
-
 async function createAdoptionRequest(req, res) {
     let petId = req.body.petId;
-
     let pet = await petService.getById(petId)
-    console.log("🚀 ~ file: adoption.controller.js ~ line 43 ~ createAdoptionRequest ~ pet", pet)
-
+    console.log(":rocket: ~ file: adoption.controller.js ~ line 43 ~ createAdoptionRequest ~ pet", pet)
     let adoptionRequest = {
         pet: {
             _id: petId,
@@ -66,7 +59,6 @@ async function createAdoptionRequest(req, res) {
         throw err;
     }
 }
-
 async function updateAdoptionRequest(req, res) {
     const adoption = req.body;
     try {
@@ -77,13 +69,9 @@ async function updateAdoptionRequest(req, res) {
         throw err;
     }
 }
-
 async function sendMessage(req, res) {
     const requestId = req.params.id;
-    // console.log('reqiestid', requestId)
-    // console.log('req session userid', req.session)
-    const userId = req.session.user._id
-    // console.log('userid', userId)
+    const userId = req.session.userId
     const message = {
         txt: req.body.message,
         from: req.session.user.fullName,
@@ -99,7 +87,6 @@ async function sendMessage(req, res) {
         throw err;
     }
 }
-
 module.exports = {
     getAdoptionRequests,
     getAdoptionRequest,
