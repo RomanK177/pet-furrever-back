@@ -80,7 +80,10 @@ async function updateAdoptionRequest(req, res) {
 
 async function sendMessage(req, res) {
     const requestId = req.params.id;
-    const userId = req.session.userId
+    // console.log('reqiestid', requestId)
+    // console.log('req session userid', req.session)
+    const userId = req.session.user._id
+    // console.log('userid', userId)
     const message = {
         txt: req.body.message,
         from: req.session.user.fullName,
