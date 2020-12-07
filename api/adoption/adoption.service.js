@@ -79,16 +79,11 @@ async function updateRequest(adoptionRequest) {
     }
 }
 
-async function sendMessage(message, adoptionRequestId, userId) {
+async function sendMessage(message, adoptionRequestId) {
     const collection = await dbService.getCollection('adoptions');
     try {
         await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message } });
         const adoptionRequest = await getById(adoptionRequestId)
-        if (userId === adoptionRequest.adopter._id) {
-            await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $set: { 'messages.owner': false } });
-        } else if (userId === adoptionRequest.owner._id) {
-            await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $set: { 'messages.adopter': false } });
-        }
         return adoptionRequest.messages;
     } catch (err) {
         console.log(`ERROR: cannot send message ${message}`)
