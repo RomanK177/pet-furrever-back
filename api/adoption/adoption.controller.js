@@ -82,19 +82,16 @@ async function updateAdoptionRequest(req, res) {
 }
 
 async function sendMessage(req, res) {
-    console.log("🚀 ~ file: adoption.controller.js ~ line 85 ~ sendMessage ~ req", req.body)
     const requestId = req.params.id;
-    console.log("🚀 ~ file: adoption.controller.js ~ line 88 ~ sendMessage ~ req.session.user", req.session._id)
-    const userId = req.session.user._id;
     const message = {
-        txt: req.body.message.txt,
+        txt: req.body.message,
         from: req.session.user.fullName,
         date: new Date(),
         isReadSender: true,
         isReadReceiver: false
     };
     try {
-        const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
+        const adoptionRequest = await adoptionService.sendMessage(message, requestId);
         res.send(adoptionRequest);
     } catch (err) {
         console.log(`ERROR: ${err}`)
