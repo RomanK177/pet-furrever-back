@@ -62,7 +62,6 @@ async function query(requestQuery) {
 }
 
 function _filterBy(requestQuery) {
-    console.log("🚀 ~ file: pet.service.js ~ line 64 ~ _filterBy ~ requestQuery", requestQuery)
     let mainFilter = []
 
     // TODO: Support lowercase

@@ -65,7 +65,7 @@ async function addComment(req, res) {
     comment.by = {};
     console.log(petId)
     if (!req.session.user) {
-        comment.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
+        comment.by = { userId: null, fullName: "Guest", imgUrl: null }
     } else {
         comment.by.userId = req.session.user._id;
         comment.by.fullName = req.session.user.fullName;
