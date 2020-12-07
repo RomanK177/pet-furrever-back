@@ -45,7 +45,6 @@ async function remove(adoptionId) {
 }
 
 async function add(adoptionRequest) {
-    console.log("🚀 ~ file: adoption.service.js ~ line 58 ~ add ~ adoptionRequest", adoptionRequest)
     const collection = await dbService.getCollection('adoptions');
     adoptionRequest.pet._id = ObjectId(adoptionRequest.pet._id);
     adoptionRequest.adopter._id = ObjectId(adoptionRequest.adopter._id);

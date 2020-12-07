@@ -40,7 +40,6 @@ async function createAdoptionRequest(req, res) {
     let petId = req.body.petId;
 
     let pet = await petService.getById(petId)
-    console.log("🚀 ~ file: adoption.controller.js ~ line 43 ~ createAdoptionRequest ~ pet", pet)
 
     let adoptionRequest = {
         pet: {
@@ -71,7 +70,6 @@ async function createAdoptionRequest(req, res) {
 async function updateAdoptionRequest(req, res) {
 
     const adoption = req.body;
-    console.log("🚀 ~ file: adoption.controller.js ~ line 74 ~ updateAdoptionRequest ~ adoption", adoption)
     try {
         await adoptionService.updateRequest(adoption);
         res.send(adoption);
@@ -82,8 +80,6 @@ async function updateAdoptionRequest(req, res) {
 }
 
 async function sendMessage(req, res) {
-    console.log(socket);
-    console.log(socket.socketConnection)
     const requestId = req.params.id;
     const message = {
         txt: req.body.message,
