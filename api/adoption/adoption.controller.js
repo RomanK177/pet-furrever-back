@@ -69,7 +69,9 @@ async function createAdoptionRequest(req, res) {
 }
 
 async function updateAdoptionRequest(req, res) {
+
     const adoption = req.body;
+    console.log("🚀 ~ file: adoption.controller.js ~ line 74 ~ updateAdoptionRequest ~ adoption", adoption)
     try {
         await adoptionService.updateRequest(adoption);
         res.send(adoption);
@@ -80,10 +82,12 @@ async function updateAdoptionRequest(req, res) {
 }
 
 async function sendMessage(req, res) {
+    console.log("🚀 ~ file: adoption.controller.js ~ line 85 ~ sendMessage ~ req", req.body)
     const requestId = req.params.id;
-    const userId = req.session.userId
+    console.log("🚀 ~ file: adoption.controller.js ~ line 88 ~ sendMessage ~ req.session.user", req.session._id)
+    const userId = req.session.user._id;
     const message = {
-        txt: req.body.message,
+        txt: req.body.message.txt,
         from: req.session.user.fullName,
         date: new Date(),
         isReadSender: true,
