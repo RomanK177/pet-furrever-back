@@ -14,6 +14,10 @@ const http = require('http').createServer(app, {
 });
 const io = require('socket.io')(http);
 
+module.exports = {
+    socketConnection: io
+};
+
 // Express App Config
 app.use(cookieParser())
 app.use(bodyParser.json());
