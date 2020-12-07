@@ -116,5 +116,5 @@ module.exports = {
     createAdoptionRequest,
     updateAdoptionRequest,
     sendMessage,
-    markMessageAsUnread
+    // markMessageAsUnread
 }
