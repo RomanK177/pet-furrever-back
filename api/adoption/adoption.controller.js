@@ -31,6 +31,7 @@ async function removeAdoptionRequest(req, res) {
     }
 }
 async function createAdoptionRequest(req, res) {
+
     let petId = req.body.petId;
     let pet = await petService.getById(petId)
     console.log(":rocket: ~ file: adoption.controller.js ~ line 43 ~ createAdoptionRequest ~ pet", pet)
@@ -60,7 +61,9 @@ async function createAdoptionRequest(req, res) {
     }
 }
 async function updateAdoptionRequest(req, res) {
+
     const adoption = req.body;
+    console.log("🚀 ~ file: adoption.controller.js ~ line 74 ~ updateAdoptionRequest ~ adoption", adoption)
     try {
         await adoptionService.updateRequest(adoption);
         res.send(adoption);
@@ -71,7 +74,6 @@ async function updateAdoptionRequest(req, res) {
 }
 async function sendMessage(req, res) {
     const requestId = req.params.id;
-    const userId = req.session.user._id
     const message = {
         txt: req.body.message,
         from: req.session.user.fullName,
@@ -80,7 +82,7 @@ async function sendMessage(req, res) {
         isReadReceiver: false
     };
     try {
-        const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
+        const adoptionRequest = await adoptionService.sendMessage(message, requestId);
         res.send(adoptionRequest);
     } catch (err) {
         console.log(`ERROR: ${err}`)
@@ -93,5 +95,6 @@ module.exports = {
     removeAdoptionRequest,
     createAdoptionRequest,
     updateAdoptionRequest,
-    sendMessage
+    sendMessage,
+    // markMessageAsUnread
 }
