@@ -3,7 +3,7 @@ const logger = require('../../services/logger.service');
 const petService = require('../pet/pet.service');
 const { request } = require('express');
 const { getById } = require('../pet/pet.service');
-
+const socket = require('../../server')
 
 async function getAdoptionRequests(req, res) {
     try {
@@ -82,6 +82,8 @@ async function updateAdoptionRequest(req, res) {
 }
 
 async function sendMessage(req, res) {
+    console.log(socket);
+    console.log(socket.socketConnection)
     const requestId = req.params.id;
     const message = {
         txt: req.body.message,
@@ -92,6 +94,7 @@ async function sendMessage(req, res) {
     };
     try {
         const adoptionRequest = await adoptionService.sendMessage(message, requestId);
+        socket.socketConnection.to(requestId).emit('new message')
         res.send(adoptionRequest);
     } catch (err) {
         console.log(`ERROR: ${err}`)

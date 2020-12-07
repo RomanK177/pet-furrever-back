@@ -19,23 +19,20 @@ function connectSockets(io) {
             socket.myTopic = topic;
         })
 
-        socket.on('chat newMsg', (msg) => {
+        // socket.on('chat newMsg', (msg) => {
 
-            io.to(socket.myTopic).emit('chat addMsg', msg)
+        //     io.to(socket.myTopic).emit('chat addMsg', msg)
 
-        })
-        socket.on('chat topic', topic => {
+        // })
+        socket.on('register chat room', adoptionRequestId => {
+            socket.join(adoptionRequestId)
+        });
 
-            if (socket.myTopic) {
-                socket.leave(socket.myTopic)
-            }
-            socket.join(topic)
-            socket.myTopic = topic;
-        })
+        socket.on('leave chat room', adoptionRequestId => {
+            socket.leave(adoptionRequestId)
+        });
 
 
     })
-
-
 
 }
