@@ -85,12 +85,6 @@ function _filterBy(requestQuery) {
         mainFilter.push({ "size": { $eq: requestQuery.size } });
     }
 
-    // TODO: Support if Roman want this filter
-    // if (requestQuery.favorites) {
-    //     for getting user favorites
-    //     1. Get all user favorite pets ids
-    //     { "_id": { $in: [favorite pet ids goes here]] } }
-    // }
     return mainFilter;
 }
 

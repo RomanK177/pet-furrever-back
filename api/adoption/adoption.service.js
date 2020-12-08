@@ -9,7 +9,7 @@ module.exports = {
     add,
     updateRequest,
     sendMessage,
-    // markMessageAsUnread
+    markMessageAsUnread
 }
 
 async function query() {
@@ -81,23 +81,25 @@ async function updateRequest(adoptionRequest) {
 async function sendMessage(message, adoptionRequestId) {
     const collection = await dbService.getCollection('adoptions');
     try {
-        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message } });
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message} });
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { isReadReceiver: false} });
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { isReadSender: true} });
         const adoptionRequest = await getById(adoptionRequestId)
-        return adoptionRequest.messages;
+        return adoptionRequest;
     } catch (err) {
         console.log(`ERROR: cannot send message ${message}`)
         throw err;
     }
 }
 
-// async function markMessageAsUnread(message, adoptionRequestId){
-//     const collection = await dbService.getCollection('adoptions');
-//     try {
-//         await collection.update({ _id: ObjectId(adoptionRequestId) }, { $set: { isReadReceiver: true } });
-//         const adoptionRequest = await getById(adoptionRequestId)
-//         return adoptionRequest.messages;
-//     } catch (err) {
-//         console.log(`ERROR: cannot send message ${message}`)
-//         throw err;
-//     }
-// }
+async function markMessageAsUnread(adoptionRequestId){
+    const collection = await dbService.getCollection('adoptions');
+    try {
+        await collection.update({ _id: ObjectId(adoptionRequestId) }, { $set: { isReadReceiver: true } });
+        const adoptionRequest = await getById(adoptionRequestId)
+        return adoptionRequest;
+    } catch (err) {
+        console.log(`ERROR: cannot send message ${message}`)
+        throw err;
+    }
+}
