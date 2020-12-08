@@ -81,14 +81,13 @@ async function updateAdoptionRequest(req, res) {
 
 async function sendMessage(req, res) {
     const requestId = req.params.id;
-    const userId = req.session.user._id;
     const message = {
         txt: req.body.message,
         from: req.session.user.fullName,
         date: new Date(),
     };
     try {
-        const adoptionRequest = await adoptionService.sendMessage(message, requestId, userId);
+        const adoptionRequest = await adoptionService.sendMessage(message, requestId);
         socket.socketConnection.to(requestId).emit('new message')
         res.send(adoptionRequest);
     } catch (err) {
@@ -97,16 +96,6 @@ async function sendMessage(req, res) {
     }
 }
 
-async function markMessageAsUnread(){
-    const requestId = req.params.id;
-    try {
-        const adoptionRequest = await adoptionService.markMessageAsUnread(requestId);
-        res.send(adoptionRequest);
-    } catch (err) {
-        console.log(`ERROR: ${err}`)
-        throw err;
-    }
-}
 
 module.exports = {
     getAdoptionRequests,
@@ -114,6 +103,5 @@ module.exports = {
     removeAdoptionRequest,
     createAdoptionRequest,
     updateAdoptionRequest,
-    sendMessage,
-    markMessageAsUnread
+    sendMessage
 }
