@@ -9,7 +9,6 @@ module.exports = {
     add,
     updateRequest,
     sendMessage,
-    // markMessageAsUnread
 }
 
 async function query() {
@@ -81,7 +80,7 @@ async function updateRequest(adoptionRequest) {
 async function sendMessage(message, adoptionRequestId) {
     const collection = await dbService.getCollection('adoptions');
     try {
-        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message } });
+        await collection.updateOne({ _id: ObjectId(adoptionRequestId) }, { $push: { messages: message} });
         const adoptionRequest = await getById(adoptionRequestId)
         return adoptionRequest.messages;
     } catch (err) {
@@ -89,15 +88,3 @@ async function sendMessage(message, adoptionRequestId) {
         throw err;
     }
 }
-
-// async function markMessageAsUnread(message, adoptionRequestId){
-//     const collection = await dbService.getCollection('adoptions');
-//     try {
-//         await collection.update({ _id: ObjectId(adoptionRequestId) }, { $set: { isReadReceiver: true } });
-//         const adoptionRequest = await getById(adoptionRequestId)
-//         return adoptionRequest.messages;
-//     } catch (err) {
-//         console.log(`ERROR: cannot send message ${message}`)
-//         throw err;
-//     }
-// }

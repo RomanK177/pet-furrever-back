@@ -78,8 +78,6 @@ async function sendMessage(req, res) {
         txt: req.body.message,
         from: req.session.user.fullName,
         date: new Date(),
-        isReadSender: true,
-        isReadReceiver: false
     };
     try {
         const adoptionRequest = await adoptionService.sendMessage(message, requestId);
@@ -90,12 +88,16 @@ async function sendMessage(req, res) {
         throw err;
     }
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 653c74a783d8ee52ac568f281a645b8935cc407c
 module.exports = {
     getAdoptionRequests,
     getAdoptionRequest,
     removeAdoptionRequest,
     createAdoptionRequest,
     updateAdoptionRequest,
-    sendMessage,
-    // markMessageAsUnread
+    sendMessage
 }

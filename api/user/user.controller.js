@@ -53,7 +53,7 @@ async function addReview(req, res) {
     let review = req.body;
     review.by = {};
     if (!req.session.user) {
-        review.by = { userId: null, fullName: "Guest", imgUrl: "guest.jpg" }
+        review.by = { userId: null, fullName: "Guest", imgUrl: null }
     } else {
         review.by.userId = req.session.user._id;
         review.by.fullName = req.session.user.fullName;
