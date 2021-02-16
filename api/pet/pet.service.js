@@ -2,6 +2,7 @@
 // const { request } = require('http');
 const { request } = require('express');
 const dbService = require('../../services/db.service');
+const userService = require('../user/user.service');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -14,6 +15,15 @@ module.exports = {
     addTreat,
     approveAdoption
 }
+
+let aggQuery = [{
+    $lookup: {
+        from: 'users',
+        localField: 'ownerId',
+        foreignField: '_id',
+        as: 'owner'
+    },
+}]
 
 async function query(requestQuery) {
     const mainFilter = _filterBy(requestQuery);
@@ -63,14 +73,18 @@ async function query(requestQuery) {
 
 function _filterBy(requestQuery) {
     let mainFilter = []
-
-    // TODO: Support lowercase
     // TODO: Support search by all
     if (requestQuery.txt) {
         let textFields = []
-        textFields.push({ "name": { $regex: `.*${requestQuery.txt}.*` } });
-        textFields.push({ "description": { $regex: `.*${requestQuery.txt}.*` } });
-        textFields.push({ "about": { $regex: `.*${requestQuery.txt}.*` } });
+        // textFields.push({ "name": { $regex: `.*${requestQuery.txt }.*` } });
+        textFields.push({ "name":   { $regex : new RegExp(requestQuery.txt, "i") } });
+        // textFields.push({ "description": { $regex: `.*${requestQuery.txt}.*` } });
+        textFields.push({ "description":   { $regex : new RegExp(requestQuery.txt, "i") } });
+        // textFields.push({ "about": { $regex: `.*${requestQuery.txt}.*` } });
+        // textFields.push({ "ownerName":   { $regex : new RegExp('^' + requestQuery.txt + ".*", "i", "m")}});
+        textFields.push({ "ownerName":   { $regex : new RegExp(requestQuery.txt, "gmi")}});
+
+
 
         mainFilter.push({
             $or: textFields

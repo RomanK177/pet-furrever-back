@@ -88,11 +88,8 @@ async function sendMessage(req, res) {
         throw err;
     }
 }
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 653c74a783d8ee52ac568f281a645b8935cc407c
 module.exports = {
     getAdoptionRequests,
     getAdoptionRequest,

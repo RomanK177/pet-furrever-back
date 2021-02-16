@@ -4,6 +4,9 @@ const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+var sanitize = require('mongo-sanitize');
+
+// var clean = sanitize(req.params.username);
 
 const app = express()
 
