@@ -14,7 +14,6 @@ async function getAdoptionRequests(req, res) {
     throw err;
   }
 }
-
 async function getAdoptionRequest(req, res) {
   try {
     const adoption = await adoptionService.getById(req.params.id);
@@ -24,7 +23,6 @@ async function getAdoptionRequest(req, res) {
     throw err;
   }
 }
-
 async function removeAdoptionRequest(req, res) {
   try {
     await adoptionService.remove(req.params.id);
@@ -34,12 +32,11 @@ async function removeAdoptionRequest(req, res) {
     throw err;
   }
 }
-
 async function createAdoptionRequest(req, res) {
   let petId = req.body.petId;
 
+  let petId = req.body.petId;
   let pet = await petService.getById(petId);
-
   let adoptionRequest = {
     pet: {
       _id: petId,
@@ -65,7 +62,6 @@ async function createAdoptionRequest(req, res) {
     throw err;
   }
 }
-
 async function updateAdoptionRequest(req, res) {
   const adoption = req.body;
   try {
@@ -76,7 +72,6 @@ async function updateAdoptionRequest(req, res) {
     throw err;
   }
 }
-
 async function sendMessage(req, res) {
   const requestId = req.params.id;
   const message = {

@@ -2,10 +2,8 @@ const express = require('express');
 const { requireAuth, requireOwner } = require('../../middlewares/requireAuth.middleware')
 const { getAdoptionRequests, getAdoptionRequest, removeAdoptionRequest, updateAdoptionRequest, createAdoptionRequest, sendMessage } = require('./adoption.controller.js');
 const router = express.Router();
-
 // middleware that is specific to this router
 // router.use(requireAuth)
-
 router.get('/', getAdoptionRequests);
 router.post('/', requireAuth, createAdoptionRequest);
 router.get('/:id', getAdoptionRequest);
